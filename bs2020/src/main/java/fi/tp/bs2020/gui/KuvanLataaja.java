@@ -50,10 +50,10 @@ public class KuvanLataaja {
     private BufferedImage lataa(String tiedosto) {
         BufferedImage palautus = null;
         try {                
-          palautus = ImageIO.read(new File(tiedosto));
-       } catch (IOException ex) {
+            palautus = ImageIO.read(new File(tiedosto));
+        } catch (IOException ex) {
             // handle exception...
-       }
+        }
         return palautus;
     }
     

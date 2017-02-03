@@ -148,16 +148,16 @@ public class MaastonLuoja {
                 int yy = arpoja.nextInt(20 - pituus);
                 boolean alatee = false;
                 for (int cc = 0; cc < pituus; cc++) {
-                    if ((maasto[yy+cc][xx] == 1) || (maasto[yy+cc][xx] == 2)) {                  
+                    if ((maasto[yy + cc][xx] == 1) || (maasto[yy + cc][xx] == 2)) {                  
                         alatee = true;
                     }
                     if (xx > 0) {
-                        if (maasto[yy+cc][xx-1] == 2) {
+                        if (maasto[yy + cc][xx - 1] == 2) {
                             alatee = true;
                         }
                     }
                     if (xx < 19) {
-                        if (maasto[yy+cc][xx+1] == 2) {
+                        if (maasto[yy + cc][xx + 1] == 2) {
                             alatee = true;
                         }
                     }
@@ -177,15 +177,15 @@ public class MaastonLuoja {
                 if (!alatee) {
                     List koordinaatit = new ArrayList<>();
                     for (int cc = 0; cc < pituus; cc++) {
-                        maasto[yy+cc][xx] = 2;
-                        koordinaatit.add(yy+cc);
+                        maasto[yy + cc][xx] = 2;
+                        koordinaatit.add(yy + cc);
                         koordinaatit.add(xx);
                         if (cc == 0) {
-                            piirrettava[yy+cc][xx] = 10; // PYSTYPÄÄTYPALA 10
+                            piirrettava[yy + cc][xx] = 10; // PYSTYPÄÄTYPALA 10
                         } else if (cc == (pituus - 1)) {
-                            piirrettava[yy+cc][xx] = 12; // PYSTYPÄÄTYPALA 12
+                            piirrettava[yy + cc][xx] = 12; // PYSTYPÄÄTYPALA 12
                         } else {
-                            piirrettava[yy+cc][xx] = 11; // PYSTYKESKIPALA 11
+                            piirrettava[yy + cc][xx] = 11; // PYSTYKESKIPALA 11
                         }
                     }
                     laivat.put(avain, koordinaatit);
@@ -198,16 +198,16 @@ public class MaastonLuoja {
                 int yy = arpoja.nextInt(20);
                 boolean alatee = false;
                 for (int cc = 0; cc < pituus; cc++) {
-                    if ((maasto[yy][xx+cc] == 1) || (maasto[yy][xx+cc] == 2)) {
+                    if ((maasto[yy][xx + cc] == 1) || (maasto[yy][xx + cc] == 2)) {
                         alatee = true;
                     }
                     if (yy > 0) {
-                        if (maasto[yy-1][xx+cc] == 2) {
+                        if (maasto[yy - 1][xx + cc] == 2) {
                             alatee = true;
                         }
                     }
                     if (yy < 19) {
-                        if (maasto[yy+1][xx+cc] == 2) {
+                        if (maasto[yy + 1][xx + cc] == 2) {
                             alatee = true;
                         }
                     }
@@ -227,15 +227,15 @@ public class MaastonLuoja {
                 if (!alatee) {
                     List koordinaatit = new ArrayList<Integer>();
                     for (int cc = 0; cc < pituus; cc++) {
-                        maasto[yy][xx+cc] = 2;
+                        maasto[yy][xx + cc] = 2;
                         koordinaatit.add(yy);
-                        koordinaatit.add(xx+cc);
+                        koordinaatit.add(xx + cc);
                         if (cc == 0) {
-                            piirrettava[yy][xx+cc] = 13; // VAAKAPÄÄTYPALA 13
+                            piirrettava[yy][xx + cc] = 13; // VAAKAPÄÄTYPALA 13
                         } else if (cc == (pituus - 1)) {
-                            piirrettava[yy][xx+cc] = 15; // VAAKAPÄÄTYPALA 15
+                            piirrettava[yy][xx + cc] = 15; // VAAKAPÄÄTYPALA 15
                         } else {
-                            piirrettava[yy][xx+cc] = 14; // VAAKAKESKIPALA 14
+                            piirrettava[yy][xx + cc] = 14; // VAAKAKESKIPALA 14
                         }
                     }
                     laivat.put(avain, koordinaatit);

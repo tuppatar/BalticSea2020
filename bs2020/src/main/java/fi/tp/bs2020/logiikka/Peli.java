@@ -11,7 +11,7 @@ public class Peli {
     private int[][] vastustajanMaasto, vastustajanPiirrettava, pelaajanMaasto, pelaajanPiirrettava;
     private boolean[][] vastustajanMaastoaNakyvissa;
     private MaastonLuoja ml;
-    private int kursoriX,kursoriY;
+    private int kursoriX, kursoriY;
     private Map<Integer, List<Integer>> vastustajanLaivojenKoordinaatit;
     private TekoAly tekoaly;
 
@@ -50,7 +50,7 @@ public class Peli {
     public void tauko(int msecs) {
         try {
             Thread.sleep(msecs);
-        } catch(InterruptedException ex) {
+        } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }        
     }
@@ -139,13 +139,13 @@ public class Peli {
     }
     
     private boolean testaaOnkoLaivaKokonaanTuhottu(int mikaLaiva) {
-            boolean kaikkiinPaloihinOsuttu = true;
-            for (int a = 0; a < (vastustajanLaivojenKoordinaatit.get(mikaLaiva).size() / 2); a++) {
-                if (vastustajanPiirrettava[vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2)][vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2 + 1)] < 20) {
-                    kaikkiinPaloihinOsuttu = false;
-                }
+        boolean kaikkiinPaloihinOsuttu = true;
+        for (int a = 0; a < (vastustajanLaivojenKoordinaatit.get(mikaLaiva).size() / 2); a++) {
+            if (vastustajanPiirrettava[vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2)][vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2 + 1)] < 20) {
+                kaikkiinPaloihinOsuttu = false;
             }
-            return kaikkiinPaloihinOsuttu;
+        }
+        return kaikkiinPaloihinOsuttu;
     }
     
     private void piirraTuhottuLaivaLaivaksi(int mikaLaiva) {
