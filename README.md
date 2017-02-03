@@ -1,5 +1,7 @@
 ﻿# BalticSea2020
 
-Viikko 2 ei täysin vastaa vaatimuksia. Maven-projektit eivät toimi kummallakaan koneellani (Windows) kunnolla. 
-Ne eivät tulosta mitään input-output ikkunaan jne. Tästä johtuen pit- ja checkstyleraportteja ei ole, kun olen
-tehnyt normaalina javaprojektina. kokeilen jos pajassa vaikka saisi ratkaisua ongelmaan.
+Peli on laajennettu versio perinteisestä laivanupotuksesta. Peliin on tarkoitus lisätä laivojen lisäksi satama sekä saarille siiviliasumuksia, joihin vastustaja EI saa osua.
+
+Dokumentaatio:
+[aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
+[tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
