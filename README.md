@@ -5,3 +5,4 @@ Peli on laajennettu versio perinteisestä laivanupotuksesta. Peliin on tarkoitus
 Dokumentaatio:
 [aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/tuppatar/BalticSea2020/blob/master/dokumentaatio/pit-raportti/index.html)
