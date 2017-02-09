@@ -30,12 +30,17 @@ public class Kayttis implements Runnable {
 
         Random arpoja = new Random();
         
-        peli = new Peli(arpoja);
+        aanet = new Aanet();
+        aanet.setSoita(2);
+        new Thread(aanet).start();
+        //aanet.start();
+        peli = new Peli(arpoja, aanet);
         luoKomponentit(frame.getContentPane());
         lisaaKuuntelijat();
 
         //Test
-        //aanet.soitaMenumusiikki(); AANET
+        //aanet.play("erased.wav");
+        //aanet.soitaMenumusiikki(); //AANET
         //aanet.play("Musa.mp3");
         
         frame.pack();

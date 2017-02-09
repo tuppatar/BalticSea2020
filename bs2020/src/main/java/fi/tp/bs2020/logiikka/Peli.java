@@ -1,5 +1,6 @@
 package fi.tp.bs2020.logiikka;
 
+import fi.tp.bs2020.gui.Aanet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -12,10 +13,11 @@ public class Peli {
     private boolean[][] vastustajanMaastoaNakyvissa;
     private MaastonLuoja ml;
     private int kursoriX, kursoriY;
-    private Map<Integer, List<Integer>> vastustajanLaivojenKoordinaatit;
+    private Map<Integer, List<Integer>> vastustajanLaivojenKoordinaatit, omienLaivojenKoordinaatit;
     private TekoAly tekoaly;
+    private Aanet aanet;
 
-    public Peli(Random arpoja) {
+    public Peli(Random arpoja, Aanet aanet) {
         vastustajanMaasto = new int[20][20];
         vastustajanPiirrettava = new int[20][20];
         pelaajanMaasto = new int[20][20];
@@ -23,8 +25,10 @@ public class Peli {
         vastustajanMaastoaNakyvissa = new boolean[20][20];
         
         this.arpoja = arpoja;
+        this.aanet = aanet;
         ml = new MaastonLuoja(arpoja);
         tekoaly = new TekoAly(arpoja);
+        tekoaly.setAanet(aanet);
         
         vastustajanMaasto = ml.luoVastustajanMaasto();
         vastustajanPiirrettava = ml.getPiirrettava();
@@ -36,6 +40,12 @@ public class Peli {
         // pelaajanMaasto = ml.luoPelaajanMaasto(); // Laivojen omaa asettelua ei ole vielä toteutettu.
         pelaajanMaasto = ml.luoVastustajanMaasto(); // Laivojen omaa asettelua ei ole vielä toteutettu.
         pelaajanPiirrettava = ml.getPiirrettava();
+
+        omienLaivojenKoordinaatit = ml.getLaivat(); // omat laivat
+        System.out.println(omienLaivojenKoordinaatit); // DEBUG
+        
+        tekoaly.setLaivanKoordinaatit(omienLaivojenKoordinaatit);
+
         for (int a = 0; a < 400; a++) {
             vastustajanMaastoaNakyvissa[a / 20][a % 20] = false;
         }
@@ -89,7 +99,7 @@ public class Peli {
     }
     
     public void pelaaVastustajanVuoro() {
-        boolean tekoalynKaytto = false; // DEBUG
+        boolean tekoalynKaytto = true; // DEBUG
         int dx = 0;
         int dy = 0;
         
@@ -111,7 +121,7 @@ public class Peli {
             }
         }
             
-        pelaajanMaasto[dy][dx] += 30;
+        //pelaajanMaasto[dy][dx] += 30;
         pelaajanPiirrettava[dy][dx] += 30;
     }
     

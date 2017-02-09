@@ -5,6 +5,7 @@
  */
 package fi.tp.bs2020.logiikka;
 
+import fi.tp.bs2020.gui.Aanet;
 import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,7 +36,8 @@ public class PeliTest {
     @Before
     public void setUp() {
         Random arpoja = new Random();
-        peli = new Peli(arpoja);
+        Aanet aanet = new Aanet();
+        peli = new Peli(arpoja, aanet);
     }
     
     @After
