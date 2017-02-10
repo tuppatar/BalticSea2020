@@ -7,4 +7,7 @@ Päivä | Tunnit | Kuvaus
 26.01.2017 | 6.0h | Katsoin mitä olisi pitänyt tehdä deadlineen. Kokeilin saada Mavenia toimimaan oikeasti, en onnistunut. Jatkoin vielä perusjavalla, mutta pit-raporttia ei voinut siis luoda. Parantelin edellispäivän koodia.
 1.2.2017 | 5.0h | Otettu Ohjelmoinnin perusteista napattu Fotari-LIB pois käytöstä ja korvattu Swingin kuvanlataus-metodeilla. Koodia paranneltu huomattavasti kuvien hallinnan osalta ja tekoälyn toteutusta aloitettu.
 3.2.2017 | 4.0h | Projektin muuttaminen Maven-projektiksi ja GIT-kansiorakenteen järkeistäminen. Valmiutta ääniefekteille aloitettu. Checkstyle-huomautusten korjailua ensimmäisen kerran, joten niitä oli aika paljon.
+7.2.2017 | 5.0h | Tekoälyn tekemistä. Tässä meni aikaa. Kone ampuu osuttujen laivapalojen lähelle ja välttelee paikkoja sitä enemmän, mitä enemmän niissä on paljastunutta saaristoa lähellä.
+9.2.2017 | 5.5h | Tekoälyn saattaminen loppuun ja nyt musiikin ja ääniefektien soitto "taustalla" toimii. Tosin soitot ovat nyt kommentoitu pois pelintekemisen ajaksi.
+10.2.2017 | 2.0h | CheckStyle- ja PIT- valitusten korjailua ja parin testin lisäys. Pari tyylipuutetta (liian monta riviä ja sisäkkäistä if-lausetta vielä jäi).
 ... | ... | ...
