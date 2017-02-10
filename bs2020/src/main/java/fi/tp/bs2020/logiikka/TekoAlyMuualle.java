@@ -2,7 +2,9 @@ package fi.tp.bs2020.logiikka;
 
 import java.util.Random;
 
-
+/**
+ * Tekoäly, jota käytetään kun laivanpommitus ei ole kesken. Välttelee saaria.
+ */
 public class TekoAlyMuualle {
     
     private int[][] maasto;
@@ -12,7 +14,14 @@ public class TekoAlyMuualle {
         this.maasto = maasto;
         this.arpoja = arpoja;
     }
-    
+    /**
+     * Laskee viereisien palojen "saaristoisuuspisteet", jos ovat jo näkyvillä.
+     * @param pisteita pisteitä.
+     * @param dy y.
+     * @param dx x.
+     * @param maasto maasto.
+     * @return pisteet.
+     */
     private int laskeViereiset(int pisteita, int dy, int dx, int[][] maasto) {
         int yhteensa = 0;
         if (dy > 0) {
@@ -37,10 +46,17 @@ public class TekoAlyMuualle {
         }
         return yhteensa;
     }
-    
+    /**
+     * Laskee kulmittaisten palojen "saaristoisuuspisteet", jos ovat jo näkyvillä.
+     * @param pisteita pisteitä.
+     * @param dy y.
+     * @param dx x.
+     * @param maasto maasto.
+     * @return pisteet.
+     */
     private int laskeKulmittaiset(int pisteita, int dy, int dx, int[][] maasto) {
         int yhteensa = 0;
-         if (dy > 0 && dx > 0) {
+        if (dy > 0 && dx > 0) {
             if (maasto[dy - 1][dx - 1] == 31) {
                 yhteensa += pisteita;
             }
@@ -62,32 +78,45 @@ public class TekoAlyMuualle {
         }
         return yhteensa;
     }
-    
+    /**
+     * Laskee viereisiä viereisten palojen "saaristoisuuspisteet", jos ovat jo näkyvillä.
+     * @param pisteita pisteitä.
+     * @param dy y.
+     * @param dx x.
+     * @param maasto maasto.
+     * @return pisteet.
+     */
     private int laskeViereistenViereiset(int pisteita, int dy, int dx, int[][] maasto) {
         int yhteensa = 0;
-        if (dy > 0) {
-            if (maasto[dy - 1][dx] == 31) {
+        if (dy > 1) {
+            if (maasto[dy - 2][dx] == 31) {
                 yhteensa += pisteita;
             }
         }
-        if (dy < 19) {
-            if (maasto[dy + 1][dx] == 31) {
+        if (dy < 18) {
+            if (maasto[dy + 2][dx] == 31) {
                 yhteensa += pisteita;
             }
         }
-        if (dx > 0) {
-            if (maasto[dy][dx - 1] == 31) {
+        if (dx > 1) {
+            if (maasto[dy][dx - 2] == 31) {
                 yhteensa += pisteita;
             }
         }
-        if (dx < 19) {
-            if (maasto[dy][dx + 1] == 31) {
+        if (dx < 18) {
+            if (maasto[dy][dx + 2] == 31) {
                 yhteensa += pisteita;
             }
         }
         return yhteensa;
     }
- 
+/**
+ * "dynaaminen" tekoäly, jossa todennäköisyys vaihtelee, sille ammutaanko miten lähelle näkyviä saaripaloja.
+ * @param dy y.
+ * @param dx x.
+ * @param maasto maasto.
+ * @return onko saarta ammuttavan kohteen lähellä tekoälyn mielestä.
+ */ 
     private boolean katsoOnkoSaartaVieressa(int dy, int dx, int[][] maasto) {
         int pisteita = laskeViereiset(10, dy, dx, maasto); //max 40
         pisteita += laskeKulmittaiset(7, dy, dx, maasto); // max 28
@@ -98,7 +127,10 @@ public class TekoAlyMuualle {
         }
         return false;
     }
-
+/**
+ * Kokeillaan 100 kertaa paikkaa, jossa näkyvää saaristoa ei ole "liian lähellä".
+ * @return paluuarvo ammuttavalle kohteelle.
+ */
     public int ammutaanMuualle() {
         boolean osumaHyvaksytty = false;
         int dy = 0;

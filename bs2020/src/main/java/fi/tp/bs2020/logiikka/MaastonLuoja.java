@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-
+/**
+ * Luokka luo maaston siten, että saarista tulee järkevän näköisiä kokonaisuuksia.
+ */
 public class MaastonLuoja {
 
     private Random arpoja;
@@ -27,7 +29,10 @@ public class MaastonLuoja {
     public Map<Integer, List<Integer>> getLaivat() {
         return laivat;
     }
-    
+/**
+ * Tässä luodaan vastustajan maasto, toistaiseksi vielä pelaajankin.
+ * @return vastustajan maasto.
+ */    
     public int[][] luoVastustajanMaasto() {
 
         teeVesi();
@@ -57,7 +62,9 @@ public class MaastonLuoja {
         
         return maasto;
     }
-
+/**
+ * Alustetaan maasto (vedeksi).
+ */
     private void teeVesi() {
         for (int a = 0; a < 20; a++) {
             for (int b = 0; b < 20; b++) {
@@ -65,7 +72,9 @@ public class MaastonLuoja {
             }
         }
     }
-
+/**
+ * Luodaan maastoon 80 maapalaa järkeviksi saariksi.
+ */
     private void teeMaa() {
         int a = 0;
         while (a < 80) { // maapalojen lukumäärä
@@ -83,11 +92,18 @@ public class MaastonLuoja {
                     int e = 0;
                     for (int d = 0; d < 20; d++) {
                         for (int b = 0; b < 20; b++) {
+//                            if (maasto[b][d] == 1) {
+//                                if (e == tod2) {
+//                                    x = b;
+//                                    y = d;
+//                                }
+//                                e++;
+//                            }
+                            if (maasto[b][d] == 1 && e == tod2) {
+                                x = b;
+                                y = d;
+                            }
                             if (maasto[b][d] == 1) {
-                                if (e == tod2) {
-                                    x = b;
-                                    y = d;
-                                }
                                 e++;
                             }
                         }
@@ -125,7 +141,9 @@ public class MaastonLuoja {
             
         }
     }
-    
+/**
+ * Kopioidaan vesi ja maa piirtotaulukkoon.
+ */    
     private void lisaaPiirrettavaanVesiJaMaa() {
         for (int a = 0; a < 20; a++) {
             for (int b = 0; b < 20; b++) {
@@ -137,7 +155,11 @@ public class MaastonLuoja {
             }
         }
     }
-    
+/**
+ * Sijoitetaan maastoon laiva. paikka arvotaan ja testataan että laivan osat ei mene maalle.
+ * @param pituus laivan pituus.
+ * @param avain laiva-mapin avain.
+ */    
     private void teeLaiva(int pituus, int avain) {
             
         boolean onnistus = false;
@@ -192,7 +214,9 @@ public class MaastonLuoja {
                     onnistus = true;
                 }
                     
-                
+ /**
+  * Tässä on nyt copy-pastekoodia mutta toisella tavalla x ja y menevät epäloogisesti. tämä on mahdollista korjata.
+  */               
             } else { // VAAKAAN
                 int xx = arpoja.nextInt(20 - pituus);
                 int yy = arpoja.nextInt(20);
@@ -242,57 +266,6 @@ public class MaastonLuoja {
                     onnistus = true;
                 }
             }
-        }
-            
-    }
-
-    public void debugDraw(int[][] maastod) {
-        for (int aa = 0; aa < 20; aa++) {
-            for (int b = 0; b < 20; b++) {
-                int de = maastod[aa][b];
-//                    System.out.print(de + " ");
-                if (de == 0) {
-                    System.out.print(".");
-                } else if (de == 1) {
-                    System.out.print("#");
-                } else if (de == 2) {
-                    System.out.print("O");
-                } else if (de == 10) {
-                    System.out.print("^");
-                } else if (de == 11) {
-                    System.out.print("|");
-                } else if (de == 12) {
-                    System.out.print("V");
-                } else if (de == 13) {
-                    System.out.print("<");
-                } else if (de == 14) {
-                    System.out.print("-");
-                } else if (de == 15) {
-                    System.out.print(">");
-                }
-
-                if (de == 30) {
-                    System.out.print(".");
-                } else if (de == 31) {
-                    System.out.print("#");
-                } else if (de == 32) {
-                    System.out.print("O");
-                } else if (de == 40) {
-                    System.out.print("^");
-                } else if (de == 41) {
-                    System.out.print("|");
-                } else if (de == 42) {
-                    System.out.print("V");
-                } else if (de == 43) {
-                    System.out.print("<");
-                } else if (de == 44) {
-                    System.out.print("-");
-                } else if (de == 45) {
-                    System.out.print(">");
-                }
-
-            }
-            System.out.println();
         }
     }
     

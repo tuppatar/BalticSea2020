@@ -46,6 +46,10 @@ public class TekoAlyTest {
         peli = new Peli(arpoja, aanet);
         maasto = peli.getPelaajanMaasto();
         ai = new TekoAly(arpoja);
+        ai.setAanet(aanet);
+        MaastonLuoja ml = new MaastonLuoja(arpoja);
+        ml.luoVastustajanMaasto();
+        laivanKoordinaatit = ml.getLaivat();
     }
     
     @After
@@ -66,6 +70,7 @@ public class TekoAlyTest {
     @Test
     public void siirtoPalauttaaArvon() {
         boolean tulos = false;
+        ai.setLaivanKoordinaatit(laivanKoordinaatit);
         int pa = ai.siirto(maasto);
         if (pa >= 0 && pa <= 399) {
             tulos = true;
@@ -75,14 +80,15 @@ public class TekoAlyTest {
     
     @Test
     public void siirtoMeneeOikeaanPaikkaan() {
+        ai.setLaivanKoordinaatit(laivanKoordinaatit);
         for (int a = 0; a < 200; a++) {
             maasto[a / 20][a % 20] = 30;
-            maasto[a / 20 + 200][a % 20] = 0;
+            maasto[a / 20 + 10][a % 20] = 0;
         }
         boolean tulos = true;
         for (int a = 0; a < 200; a++) {
             int pa = ai.siirto(maasto);
-            if (pa < 0 || pa >= 300) {
+            if (pa < 200 || pa >= 400) {
                 tulos = false;
             }
         }

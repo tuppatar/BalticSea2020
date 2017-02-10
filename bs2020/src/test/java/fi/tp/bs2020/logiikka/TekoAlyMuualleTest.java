@@ -45,6 +45,9 @@ public class TekoAlyMuualleTest {
         peli = new Peli(arpoja, aanet);
         maasto = peli.getPelaajanMaasto();
         ai = new TekoAlyMuualle(maasto, arpoja);
+        MaastonLuoja ml = new MaastonLuoja(arpoja);
+        ml.luoVastustajanMaasto();
+        laivanKoordinaatit = ml.getLaivat();
     }
     
     @After
@@ -65,12 +68,12 @@ public class TekoAlyMuualleTest {
     public void ammutaanOikeaanPaikkaan() {
         for (int a = 0; a < 200; a++) {
             maasto[a / 20][a % 20] = 30;
-            maasto[a / 20 + 200][a % 20] = 0;
+            maasto[a / 20 + 10][a % 20] = 0;
         }
         boolean tulos = true;
         for (int a = 0; a < 200; a++) {
             int pa = ai.ammutaanMuualle();
-            if (pa < 0 || pa >= 300) {
+            if (pa < 200 || pa >= 400) {
                 tulos = false;
             }
         }

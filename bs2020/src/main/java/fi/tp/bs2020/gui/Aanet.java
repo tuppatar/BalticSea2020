@@ -1,13 +1,5 @@
 package fi.tp.bs2020.gui;
 
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javax.swing.JFrame;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,8 +18,6 @@ import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 
 public class Aanet implements Runnable {
 
-//    private MediaPlayer mediaPlayer;
-//    private Media menuMusiikki;
     private String filename;
     long minPrime;
     List soittolista;
@@ -38,29 +28,8 @@ public class Aanet implements Runnable {
         this.minPrime = 143;
         this.filename = "erased.wav";
         this.soita = 0;
-//             JFrame frame = new JFrame("FX");
-//             final JFXPanel fxPanel = new JFXPanel();
-//             frame.add(fxPanel);
-//             frame.setVisible(true);
-             //Scene scene = createScene();
-             //fxPanel.setScene(scene);   
-        //menuMusiikki = new Media(getClass().getResource("Musa.mp3").toString());
-//        AudioInputStream audioIn = AudioSystem.getAudioInputStream("music.wav");
-//        Clip clip = AudioSystem.getClip();
-//        clip.open(audioIn);
-//        clip.start();        
-        //menuMusiikki = new Media("Musa.mp3");
-        //MediaPlayer mediaPlayer = new MediaPlayer(menuMusiikki);
     }
     
-//    public void soitaMenumusiikki() {
-//        mediaPlayer.play();    
-//    }
-//    
-//    public void katkaiseMenumusiikki() {
-//        mediaPlayer.stop();
-//    }
-
     public void setSoita(int soita) {
         this.soita = soita;
     }
@@ -73,12 +42,12 @@ public class Aanet implements Runnable {
     public void run() {
         //boolean ei = false;
         //while (!ei) {
-            if (soita == 1) {
-                this.play(filename);
-            }
-            if (soita == 2) {
-                this.play("Musa.mp3");
-            }
+        if (soita == 1) {
+            this.play(filename);
+        }
+        if (soita == 2) {
+            this.play("Musa.mp3");
+        }
         //}
     }
     

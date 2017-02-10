@@ -1,6 +1,3 @@
-/**
- * Kalibrointiarvo todennäköisyyden laskemiseen.
- */
 package fi.tp.bs2020.logiikka;
 
 import fi.tp.bs2020.gui.Aanet;
@@ -9,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-
+/**
+ * Tekoälystä vastaava luokka. Kone ampuu lähelle osuttua laivapalaa ja välttelee paikkoja joissa saaristoa.
+ */
 public class TekoAly {
     
     private Random arpoja;

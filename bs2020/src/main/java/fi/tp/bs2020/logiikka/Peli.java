@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-
+/**
+ * Peliluokka vastaa pelin kokonaisuuden toiminnallisuudesta.
+ */
 public class Peli {
     
     private Random arpoja;
@@ -32,29 +34,20 @@ public class Peli {
         
         vastustajanMaasto = ml.luoVastustajanMaasto();
         vastustajanPiirrettava = ml.getPiirrettava();
-
         vastustajanLaivojenKoordinaatit = ml.getLaivat(); //vastustajan laivat
-        System.out.println(vastustajanLaivojenKoordinaatit); // DEBUG
 
         ml = new MaastonLuoja(arpoja);
         // pelaajanMaasto = ml.luoPelaajanMaasto(); // Laivojen omaa asettelua ei ole vielä toteutettu.
         pelaajanMaasto = ml.luoVastustajanMaasto(); // Laivojen omaa asettelua ei ole vielä toteutettu.
         pelaajanPiirrettava = ml.getPiirrettava();
-
         omienLaivojenKoordinaatit = ml.getLaivat(); // omat laivat
-        System.out.println(omienLaivojenKoordinaatit); // DEBUG
         
         tekoaly.setLaivanKoordinaatit(omienLaivojenKoordinaatit);
-
         for (int a = 0; a < 400; a++) {
             vastustajanMaastoaNakyvissa[a / 20][a % 20] = false;
         }
         kursoriX = 0;
         kursoriY = 0;
-        
-        this.debugPiirra(pelaajanMaasto); // DEBUG
-        System.out.println(); // DEBUG
-        this.debugPiirra(vastustajanMaasto); // DEBUG
     }
 
     public void tauko(int msecs) {
@@ -99,36 +92,13 @@ public class Peli {
     }
     
     public void pelaaVastustajanVuoro() {
-        boolean tekoalynKaytto = true; // DEBUG
-        int dx = 0;
-        int dy = 0;
-        
-        if (tekoalynKaytto) { // DEBUG
-            int ampuu = tekoaly.siirto(pelaajanMaasto);
-            dx = ampuu % 20;
-            dy = ampuu / 20;
-        } else {
-            boolean jatketaan = true;
-            dx = arpoja.nextInt(20);
-            dy = arpoja.nextInt(20);
-
-            while (jatketaan) {
-                dx = arpoja.nextInt(20);
-                dy = arpoja.nextInt(20);
-                if (pelaajanMaasto[dy][dx] < 30) {
-                    jatketaan = false;
-                }
-            }
-        }
-            
+        int ampuu = tekoaly.siirto(pelaajanMaasto);
         //pelaajanMaasto[dy][dx] += 30;
-        pelaajanPiirrettava[dy][dx] += 30;
+        pelaajanPiirrettava[ampuu / 20][ampuu % 20] += 30;
     }
     
     private void josLaivaTuhottuKokonaanPiirraSeLaivaksi(int y, int x) {
         int mikaLaiva = palautaLaivaJohonOsuttiin(y, x); // palauttaa 200 jos ei osuttu, arvo 200 DEBUGGAUSTA varten, voidaan poistaa myöhemmin
-        System.out.println(mikaLaiva); // DEBUG
-
         if (mikaLaiva < 200) {
             if (testaaOnkoLaivaKokonaanTuhottu(mikaLaiva)) {
                 piirraTuhottuLaivaLaivaksi(mikaLaiva);
@@ -162,10 +132,6 @@ public class Peli {
         for (int a = 0; a < (vastustajanLaivojenKoordinaatit.get(mikaLaiva).size() / 2); a++) {
             vastustajanPiirrettava[vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2)][vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2 + 1)] += 20;
         }
-    }
-    
-    private void debugPiirra(int[][] debuttava) {
-        ml.debugDraw(debuttava);
     }
 
     public int[][] getVastustajanMaasto() {

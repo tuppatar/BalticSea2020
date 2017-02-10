@@ -45,6 +45,9 @@ public class TekoAlyLaivalleTest {
         Aanet aanet = new Aanet();
         peli = new Peli(arpoja, aanet);
         maasto = peli.getPelaajanMaasto();
+        MaastonLuoja ml = new MaastonLuoja(arpoja);
+        ml.luoVastustajanMaasto();
+        laivanKoordinaatit = ml.getLaivat();
     }
     
     @After
@@ -56,11 +59,14 @@ public class TekoAlyLaivalleTest {
         boolean tulos = false;
         for (int a = 0; a < 200; a++) {
             maasto[a / 20][a % 20] = 0;
-            maasto[a / 20 + 200][a % 20] = 0;
+            maasto[a / 20 + 10][a % 20] = 0;
         }
         maasto[15][15] = 33;
-        ai = new TekoAlyLaivalle(maasto, 15, 15, arpoja);
-        int pa = ai.ammutaanLaivaa();
+        maasto[15][14] = 30;
+        maasto[15][16] = 30;
+        ai = new TekoAlyLaivalle(maasto, 15, 15, new Random());
+        int pa = 500;
+        pa = ai.ammutaanLaivaa();
         if (pa >= 0 && pa <= 399) {
             tulos = true;
         }
@@ -71,7 +77,7 @@ public class TekoAlyLaivalleTest {
     public void ammutaanOikeaanLaivaan() {
         for (int a = 0; a < 200; a++) {
             maasto[a / 20][a % 20] = 30;
-            maasto[a / 20 + 200][a % 20] = 0;
+            maasto[a / 20 + 10][a % 20] = 0;
         }
         boolean tulos = true;
 //        for (int a = 0; a < 200; a++) {

@@ -32,7 +32,7 @@ public class Kayttis implements Runnable {
         
         aanet = new Aanet();
         aanet.setSoita(2);
-        new Thread(aanet).start();
+        //new Thread(aanet).start();
         //aanet.start();
         peli = new Peli(arpoja, aanet);
         luoKomponentit(frame.getContentPane());
