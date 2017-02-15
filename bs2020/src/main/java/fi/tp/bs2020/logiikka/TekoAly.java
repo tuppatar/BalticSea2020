@@ -24,7 +24,10 @@ public class TekoAly {
     public void setAanet(Aanet aanet) {
         this.aanet = aanet;
     }
-
+/**
+ * Asttaa laivojen koordinaatit muuttujaan ja alustaa tuhottu-MAPin.
+ * @param laivanKoordinaatit laivojen koordinaatit.
+ */
     public void setLaivanKoordinaatit(Map<Integer, List<Integer>> laivanKoordinaatit) {
         this.laivanKoordinaatit = laivanKoordinaatit;
         laivaTuhottu = new HashMap<>();
@@ -69,6 +72,9 @@ public class TekoAly {
                 for (int a = 0; a < (laivanKoordinaatit.get(laiva).size() / 2); a++) {
                     if (laivanKoordinaatit.get(laiva).get(a * 2) == dy && laivanKoordinaatit.get(laiva).get(a * 2 + 1) == dx) {
                         laivaTuhottu.replace(laiva, 1);
+                        if (laivanKoordinaatit.get(laiva).size() == 2) { //sukellusvene
+                            laivaTuhottu.replace(laiva, 2);
+                        }
                     }
                 }
             }
@@ -109,7 +115,12 @@ public class TekoAly {
         maasto[pal / 20][pal % 20] += 30; // huono tapa                
         return pal;
     }
-    
+/**
+ * Tekee tietokonepelaajan siirron. Jos jokin laivan pommitus on kesken, yritetään sitä eli käytetään
+ * PommitaLaivaa-luokkaa. Muuten käytetään PommiteanMuualle-luokkaa.
+ * @param maasto Pelaajan maasto.
+ * @return 
+ */    
     public int siirto(int[][] maasto) {
         int paluuarvo = 0;
 

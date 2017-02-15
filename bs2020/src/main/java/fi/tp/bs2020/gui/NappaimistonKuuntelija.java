@@ -2,6 +2,7 @@ package fi.tp.bs2020.gui;
 
 import fi.tp.bs2020.logiikka.Peli;
 import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -42,10 +43,22 @@ public class NappaimistonKuuntelija implements KeyListener {
             }
         } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             if (peli.pelaaOmaVuoro()) {
-                component.repaint();        
-                peli.pelaaVastustajanVuoro();
+                component.repaint();
+                if (peli.getVastustajaOhittaaVuoroja() == 0) {
+                    peli.pelaaVastustajanVuoro();
+                } else {
+                    peli.setVastustajaOhittaaVuoroja(peli.getVastustajaOhittaaVuoroja() - 1);
+                }
                 //component.repaint();        
-                //peli.tauko(500);
+//            peli.tauko(1000);
+            }
+            while (peli.getPelaajaOhittaaVuoroja() > 0) {
+                    if (peli.getVastustajaOhittaaVuoroja() == 0) {
+                        peli.pelaaVastustajanVuoro();
+                    } else {
+                        peli.setVastustajaOhittaaVuoroja(peli.getVastustajaOhittaaVuoroja() - 1);
+                    }
+                peli.setPelaajaOhittaaVuoroja(peli.getPelaajaOhittaaVuoroja() - 1);
             }
         }
 

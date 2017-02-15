@@ -11,9 +11,9 @@ import javax.swing.WindowConstants;
 public class Kayttis implements Runnable {
 
     private JFrame frame;
-    private Palusta piirtoalusta;
+    private Grafiikka piirtoalusta;
     private Peli peli;
-    private Palusta piiro;
+    private Grafiikka piiro;
     
     private Aanet aanet;
     
@@ -48,7 +48,7 @@ public class Kayttis implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
-        piirtoalusta = new Palusta(peli);
+        piirtoalusta = new Grafiikka(peli);
         container.add(piirtoalusta);
         this.piiro = piirtoalusta;
         // this.aanet = new Aanet(); AANET

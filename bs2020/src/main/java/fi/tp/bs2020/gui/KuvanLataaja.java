@@ -22,29 +22,74 @@ public class KuvanLataaja {
     }
     
     private void luoMappi() {
-        kuvat.put(0, this.lataa("meri.png"));
-        kuvat.put(1, this.lataa("maa.png")); //1
-        kuvat.put(10, this.lataa("laiva_10.png")); //2
-        kuvat.put(11, this.lataa("laiva_11.png")); //3
-        kuvat.put(12, this.lataa("laiva_12.png")); //4
-        kuvat.put(13, this.lataa("laiva_13.png")); //5
-        kuvat.put(14, this.lataa("laiva_14.png")); //6
-        kuvat.put(15, this.lataa("laiva_15.png")); //7
-        kuvat.put(8, this.lataa("empty.png")); //8
-        kuvat.put(30, this.lataa("meri_osuma.png")); //9
-        kuvat.put(31, this.lataa("maa_osuma.png")); //10
-        kuvat.put(40, this.lataa("laiva_10_osuma.png")); //11
-        kuvat.put(41, this.lataa("laiva_11_osuma.png")); //12
-        kuvat.put(42, this.lataa("laiva_12_osuma.png")); //13
-        kuvat.put(43, this.lataa("laiva_13_osuma.png")); //14
-        kuvat.put(44, this.lataa("laiva_14_osuma.png")); //15
-        kuvat.put(45, this.lataa("laiva_15_osuma.png")); //16
-        kuvat.put(20, this.lataa("hit.png")); //17
-        kuvat.put(21, this.lataa("hit.png")); //17
-        kuvat.put(22, this.lataa("hit.png")); //17
-        kuvat.put(23, this.lataa("hit.png")); //17
-        kuvat.put(24, this.lataa("hit.png")); //17
-        kuvat.put(25, this.lataa("hit.png")); //17
+        kuvat.put(8, this.lataa("kuvat/empty.png"));
+        kuvat.put(0, this.lataa("kuvat/meri.png"));
+        kuvat.put(100, this.lataa("kuvat/meri_osuma.png"));
+        kuvat.put(9, this.lataa("kuvat/talo.png"));
+        kuvat.put(109, this.lataa("kuvat/talo_osuma.png"));
+        //kuvat.put(1, this.lataa("kuvat/maa.png")); //1
+        kuvat.put(10, this.lataa("kuvat/laiva_10.png"));
+        kuvat.put(11, this.lataa("kuvat/laiva_11.png"));
+        kuvat.put(12, this.lataa("kuvat/laiva_12.png"));
+        kuvat.put(13, this.lataa("kuvat/laiva_13.png"));
+        kuvat.put(14, this.lataa("kuvat/laiva_14.png"));
+        kuvat.put(15, this.lataa("kuvat/laiva_15.png"));
+        kuvat.put(16, this.lataa("kuvat/sukellusvene.png"));
+        //kuvat.put(31, this.lataa("kuvat/maa_osuma.png")); //10
+        kuvat.put(110, this.lataa("kuvat/laiva_10_osuma.png")); //11
+        kuvat.put(111, this.lataa("kuvat/laiva_11_osuma.png")); //12
+        kuvat.put(112, this.lataa("kuvat/laiva_12_osuma.png")); //13
+        kuvat.put(113, this.lataa("kuvat/laiva_13_osuma.png")); //14
+        kuvat.put(114, this.lataa("kuvat/laiva_14_osuma.png")); //15
+        kuvat.put(115, this.lataa("kuvat/laiva_15_osuma.png")); //16
+        kuvat.put(116, this.lataa("kuvat/sukellusvene_osuma.png")); //16
+        
+        kuvat.put(20, this.lataa("kuvat/hit.png")); //17
+        kuvat.put(21, this.lataa("kuvat/hit.png")); //17
+        kuvat.put(22, this.lataa("kuvat/hit.png")); //17
+        kuvat.put(23, this.lataa("kuvat/hit.png")); //17
+        kuvat.put(24, this.lataa("kuvat/hit.png")); //17
+        kuvat.put(25, this.lataa("kuvat/hit.png")); //17
+        
+        kuvat.put(50, this.lataa("kuvat/maaperus_1.png"));
+        kuvat.put(51, this.lataa("kuvat/maaperus_2.png"));
+        kuvat.put(52, this.lataa("kuvat/maaperus_3.png"));
+        kuvat.put(53, this.lataa("kuvat/maaperus_4.png"));
+        kuvat.put(60, this.lataa("kuvat/maa_1_meriylhaalla.png"));
+        kuvat.put(62, this.lataa("kuvat/maa_1_merioikealla.png"));
+        kuvat.put(64, this.lataa("kuvat/maa_1_merialhaalla.png"));
+        kuvat.put(66, this.lataa("kuvat/maa_1_merivasemmalla.png"));
+        kuvat.put(70, this.lataa("kuvat/maa_1_meriylhaalla_ja_oikealla.png"));
+        kuvat.put(72, this.lataa("kuvat/maa_1_merialhaalla_ja_oikealla.png"));
+        kuvat.put(74, this.lataa("kuvat/maa_1_merialhaalla_ja_vasemmalla.png"));
+        kuvat.put(76, this.lataa("kuvat/maa_1_meriylhaalla_ja_vasemmalla.png"));
+        kuvat.put(80, this.lataa("kuvat/maa_1_maaylhaalla.png"));
+        kuvat.put(82, this.lataa("kuvat/maa_1_maaoikealla.png"));
+        kuvat.put(84, this.lataa("kuvat/maa_1_maaalhaalla.png"));
+        kuvat.put(86, this.lataa("kuvat/maa_1_maavasemmalla.png"));
+        kuvat.put(90, this.lataa("kuvat/maa_1_saari.png"));
+        kuvat.put(92, this.lataa("kuvat/maa_1_merioikealla_ja_vasemmalla.png"));
+        kuvat.put(94, this.lataa("kuvat/maa_1_merialhaalla_ja_ylhaalla.png"));
+        
+        kuvat.put(150, this.lataa("kuvat/maaperus_1_osuma.png"));
+        kuvat.put(151, this.lataa("kuvat/maaperus_2_osuma.png"));
+        kuvat.put(152, this.lataa("kuvat/maaperus_3_osuma.png"));
+        kuvat.put(153, this.lataa("kuvat/maaperus_4_osuma.png"));
+        kuvat.put(160, this.lataa("kuvat/maa_1_meriylhaalla_osuma.png"));
+        kuvat.put(162, this.lataa("kuvat/maa_1_merioikealla_osuma.png"));
+        kuvat.put(164, this.lataa("kuvat/maa_1_merialhaalla_osuma.png"));
+        kuvat.put(166, this.lataa("kuvat/maa_1_merivasemmalla_osuma.png"));
+        kuvat.put(170, this.lataa("kuvat/maa_1_meriylhaalla_ja_oikealla_osuma.png"));
+        kuvat.put(172, this.lataa("kuvat/maa_1_merialhaalla_ja_oikealla_osuma.png"));
+        kuvat.put(174, this.lataa("kuvat/maa_1_merialhaalla_ja_vasemmalla_osuma.png"));
+        kuvat.put(176, this.lataa("kuvat/maa_1_meriylhaalla_ja_vasemmalla_osuma.png"));
+        kuvat.put(180, this.lataa("kuvat/maa_1_maaylhaalla_osuma.png"));
+        kuvat.put(182, this.lataa("kuvat/maa_1_maaoikealla_osuma.png"));
+        kuvat.put(184, this.lataa("kuvat/maa_1_maaalhaalla_osuma.png"));
+        kuvat.put(186, this.lataa("kuvat/maa_1_maavasemmalla_osuma.png"));
+        kuvat.put(190, this.lataa("kuvat/maa_1_saari_osuma.png"));
+        kuvat.put(192, this.lataa("kuvat/maa_1_merioikealla_ja_vasemmalla_osuma.png"));
+        kuvat.put(194, this.lataa("kuvat/maa_1_merialhaalla_ja_ylhaalla_osuma.png"));
     }
     
     private BufferedImage lataa(String tiedosto) {

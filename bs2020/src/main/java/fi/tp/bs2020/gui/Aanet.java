@@ -26,7 +26,7 @@ public class Aanet implements Runnable {
     
     public Aanet() {
         this.minPrime = 143;
-        this.filename = "erased.wav";
+        this.filename = "aanet/.wav";
         this.soita = 0;
     }
     
@@ -46,7 +46,7 @@ public class Aanet implements Runnable {
             this.play(filename);
         }
         if (soita == 2) {
-            this.play("Musa.mp3");
+            this.play("aanet/.mp3");
         }
         //}
     }

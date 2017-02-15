@@ -14,7 +14,7 @@ public class Peli {
     private int[][] vastustajanMaasto, vastustajanPiirrettava, pelaajanMaasto, pelaajanPiirrettava;
     private boolean[][] vastustajanMaastoaNakyvissa;
     private MaastonLuoja ml;
-    private int kursoriX, kursoriY;
+    private int kursoriX, kursoriY, pelaajaOhittaaVuoroja, vastustajaOhittaaVuoroja;
     private Map<Integer, List<Integer>> vastustajanLaivojenKoordinaatit, omienLaivojenKoordinaatit;
     private TekoAly tekoaly;
     private Aanet aanet;
@@ -48,6 +48,8 @@ public class Peli {
         }
         kursoriX = 0;
         kursoriY = 0;
+        pelaajaOhittaaVuoroja = 0;
+        vastustajaOhittaaVuoroja = 0;
     }
 
     public void tauko(int msecs) {
@@ -56,6 +58,22 @@ public class Peli {
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }        
+    }
+
+    public int getPelaajaOhittaaVuoroja() {
+        return pelaajaOhittaaVuoroja;
+    }
+
+    public void setPelaajaOhittaaVuoroja(int pelaajaOhittaaVuoroja) {
+        this.pelaajaOhittaaVuoroja = pelaajaOhittaaVuoroja;
+    }
+
+    public int getVastustajaOhittaaVuoroja() {
+        return vastustajaOhittaaVuoroja;
+    }
+
+    public void setVastustajaOhittaaVuoroja(int vastustaOhittaaVuoroja) {
+        this.vastustajaOhittaaVuoroja = vastustaOhittaaVuoroja;
     }
     
     public int getKursoriX() {
@@ -84,7 +102,10 @@ public class Peli {
             vastustajanPiirrettava[kursoriY][kursoriX] += 10;
             josLaivaTuhottuKokonaanPiirraSeLaivaksi(kursoriY, kursoriX);
         } else { // muu kuin laiva!
-            vastustajanPiirrettava[kursoriY][kursoriX] += 30;
+            if (vastustajanMaasto[kursoriY][kursoriX] == 3) {
+                this.setPelaajaOhittaaVuoroja(3);
+            }
+            vastustajanPiirrettava[kursoriY][kursoriX] += 100;
         }
         vastustajanMaasto[kursoriY][kursoriX] += 30;
         vastustajanMaastoaNakyvissa[kursoriY][kursoriX] = true;
@@ -94,7 +115,10 @@ public class Peli {
     public void pelaaVastustajanVuoro() {
         int ampuu = tekoaly.siirto(pelaajanMaasto);
         //pelaajanMaasto[dy][dx] += 30;
-        pelaajanPiirrettava[ampuu / 20][ampuu % 20] += 30;
+        if (pelaajanMaasto[ampuu / 20][ampuu % 20] == 33) { // oli talo
+            this.setVastustajaOhittaaVuoroja(3);
+        }
+        pelaajanPiirrettava[ampuu / 20][ampuu % 20] += 100;
     }
     
     private void josLaivaTuhottuKokonaanPiirraSeLaivaksi(int y, int x) {
@@ -130,7 +154,7 @@ public class Peli {
     
     private void piirraTuhottuLaivaLaivaksi(int mikaLaiva) {
         for (int a = 0; a < (vastustajanLaivojenKoordinaatit.get(mikaLaiva).size() / 2); a++) {
-            vastustajanPiirrettava[vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2)][vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2 + 1)] += 20;
+            vastustajanPiirrettava[vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2)][vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2 + 1)] += 90;
         }
     }
 
