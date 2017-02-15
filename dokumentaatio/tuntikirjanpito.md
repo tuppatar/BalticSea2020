@@ -10,4 +10,8 @@ Päivä | Tunnit | Kuvaus
 7.2.2017 | 5.0h | Tekoälyn tekemistä. Tässä meni aikaa. Kone ampuu osuttujen laivapalojen lähelle ja välttelee paikkoja sitä enemmän, mitä enemmän niissä on paljastunutta saaristoa lähellä.
 9.2.2017 | 5.5h | Tekoälyn saattaminen loppuun ja nyt musiikin ja ääniefektien soitto "taustalla" toimii. Tosin soitot ovat nyt kommentoitu pois pelintekemisen ajaksi.
 10.2.2017 | 2.0h | CheckStyle- ja PIT- valitusten korjailua ja parin testin lisäys. Pari tyylipuutetta (liian monta riviä ja sisäkkäistä if-lausetta vielä jäi).
+12.2.2017. | 6.0h | Luotu maastonosien, erityisesti rantojen visuaalisuuden vaatima toiminnallisuus. Lisätty talot sekä niiden toiminnallisuus.
+13.2.2017 | 2.0h | Lisätty sukellusveneet "yhden ruudun laivoiksi". Koodin siistimistä.
+14.2.2017 | 1.0h | Pohdintaa ja kokeilua, miten tekoäly kannattaisi korjata uuden maastomallin mukaiseksi.
+15.2.2017 | 4.5h | Edellinen korjattu siten, että tekoälyyn ei puututtu vaan pelaajan näkemä vastustajan maasto tarkentuu vähitellen. Tämän lisäksi koodin siistimistä ja grafiikan uudelleenpiirtelyä paremmaksi ja selkeämmäksi.
 ... | ... | ...
