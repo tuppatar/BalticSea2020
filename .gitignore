@@ -1,3 +1,5 @@
 /dist/
 /bs2020/nbproject/private/
 /bs2020/nbproject/dist/
+/bs2020/target
+.gitignore
