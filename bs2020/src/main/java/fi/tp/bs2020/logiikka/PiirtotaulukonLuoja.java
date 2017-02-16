@@ -11,12 +11,13 @@ import java.util.Random;
 public class PiirtotaulukonLuoja {
     
     private Random arpoja;
-    private int[][] maasto, piirrettava;
+    private int[][] maasto, piirrettava, maastonSatunnaisuus;
 
     public PiirtotaulukonLuoja(Random arpoja, int[][] maasto, int[][] piirrettava) {
         this.arpoja = arpoja;
         this.maasto = maasto;
         this.piirrettava = piirrettava;
+        this.maastonSatunnaisuus = new int[20][20];
     }
 /**
  * Valitsee maapalan viereisten palojen mukaisesti ja arpoo lisäksi eri vaihtoehdoista.
@@ -25,12 +26,11 @@ public class PiirtotaulukonLuoja {
  * @param x     x-koordinaatti.
  * @return      palan MAP-indeksi.
  */
-    private int valitseOikeaMaapala(int y, int x) {
+    private int valitseOikeaMaapala(int y, int x, int satunnaisuus) {
         boolean vasemmallaVetta = false;
         boolean alhaallaVetta = false;
         boolean ylhaallaVetta = false;
         boolean oikeallaVetta = false;
-        
         if (y > 0) {
             if (maasto[y - 1][x] == 0) {
                 ylhaallaVetta = true;
@@ -52,47 +52,59 @@ public class PiirtotaulukonLuoja {
             }
         }
         if (ylhaallaVetta && alhaallaVetta && vasemmallaVetta && oikeallaVetta) {
-            return 90;
+            return 90 + satunnaisuus;
         } else if (ylhaallaVetta && alhaallaVetta && vasemmallaVetta) { // maa oikealla
-            return 82;
+            return 82 + satunnaisuus;
         } else if (ylhaallaVetta && alhaallaVetta && oikeallaVetta) { // maa vasemmalla
-            return 86;
+            return 86 + satunnaisuus;
         } else if (ylhaallaVetta && oikeallaVetta && vasemmallaVetta) { // maa alhaalla
-            return 84;
+            return 84 + satunnaisuus;
         } else if (oikeallaVetta && alhaallaVetta && vasemmallaVetta) { // maa ylhaalla
-            return 80;
+            return 80 + satunnaisuus;
         } else if (oikeallaVetta && vasemmallaVetta) {
-            return 92;
+            return 92 + satunnaisuus;
         } else if (oikeallaVetta && alhaallaVetta) {
-            return 72;
+            return 72 + satunnaisuus;
         } else if (oikeallaVetta && ylhaallaVetta) {
-            return 70;
+            return 70 + satunnaisuus;
         } else if (vasemmallaVetta && ylhaallaVetta) {
-            return 76;
+            return 76 + satunnaisuus;
         } else if (vasemmallaVetta && alhaallaVetta) {
-            return 74;
+            return 74 + satunnaisuus;
         } else if (alhaallaVetta && ylhaallaVetta) {
-            return 94;
+            return 94 + satunnaisuus;
         } else if (alhaallaVetta) {
-            return 64;
+            return 64 + satunnaisuus;
         } else if (ylhaallaVetta) {
-            return 60;
+            return 60 + satunnaisuus;
         } else if (vasemmallaVetta) {
-            return 66;
+            return 66 + satunnaisuus;
         } else if (oikeallaVetta) {
-            return 62;
+            return 62 + satunnaisuus;
         }
         return 50 + arpoja.nextInt(4);
     }
+    
+    private void luoSatunnaisuus() { //maasto-taulukon mukaan voi myös luoda muunsuuruisiakin satunnaisuuksia
+        for (int loop = 0; loop < 400; loop++) {
+            maastonSatunnaisuus[loop / 20][loop % 20] = arpoja.nextInt(2);
+        }
+    }
+
+    public int[][] getMaastonSatunnaisuus() {
+        return maastonSatunnaisuus;
+    }
+    
 /**
  * Lisää piirtotaulukkoon veden ja maan.
  */
     public void lisaaVesiJaMaa() {
+        luoSatunnaisuus();
         for (int loop = 0; loop < 400; loop++) {
             if (maasto[loop / 20][loop % 20] == 0) {
                 piirrettava[loop / 20][loop % 20] = 0;
             } else {
-                piirrettava[loop / 20][loop % 20] = valitseOikeaMaapala(loop / 20, loop % 20);
+                piirrettava[loop / 20][loop % 20] = valitseOikeaMaapala(loop / 20, loop % 20, maastonSatunnaisuus[loop / 20][loop % 20]);
             }        
         }
     }

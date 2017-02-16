@@ -12,6 +12,7 @@ public class Peli {
     
     private Random arpoja;
     private int[][] vastustajanMaasto, vastustajanPiirrettava, pelaajanMaasto, pelaajanPiirrettava;
+    private int[][] vastustajanMaastonSatunnaisuus;
     private boolean[][] vastustajanMaastoaNakyvissa;
     private MaastonLuoja ml;
     private int kursoriX, kursoriY, pelaajaOhittaaVuoroja, vastustajaOhittaaVuoroja;
@@ -34,6 +35,7 @@ public class Peli {
         
         vastustajanMaasto = ml.luoVastustajanMaasto();
         vastustajanPiirrettava = ml.getPiirrettava();
+        vastustajanMaastonSatunnaisuus = ml.getMaastonSatunnaisuus();
         vastustajanLaivojenKoordinaatit = ml.getLaivat(); //vastustajan laivat
 
         ml = new MaastonLuoja(arpoja);
@@ -58,6 +60,10 @@ public class Peli {
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }        
+    }
+
+    public int[][] getVastustajanMaastonSatunnaisuus() {
+        return vastustajanMaastonSatunnaisuus;
     }
 
     public int getPelaajaOhittaaVuoroja() {

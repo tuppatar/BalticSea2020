@@ -6,7 +6,7 @@ package fi.tp.bs2020.gui;
  */
 public class PiirrettavanMuokkaaja {
 
-    private int valitseOikeaMaapala(int y, int x, int[][] alkuTaulukko, boolean[][] visible) {
+    private int valitseOikeaMaapala(int y, int x, int[][] alkuTaulukko, boolean[][] visible, int satunnaisuus) {
         boolean vasemmallaVetta = false;
         boolean alhaallaVetta = false;
         boolean ylhaallaVetta = false;
@@ -45,35 +45,35 @@ public class PiirrettavanMuokkaaja {
             }
         }
         if (ylhaallaVetta && alhaallaVetta && vasemmallaVetta && oikeallaVetta) {
-            return 190;
+            return 190 + satunnaisuus;
         } else if (ylhaallaVetta && alhaallaVetta && vasemmallaVetta) { // maa oikealla
-            return 182;
+            return 182 + satunnaisuus;
         } else if (ylhaallaVetta && alhaallaVetta && oikeallaVetta) { // maa vasemmalla
-            return 186;
+            return 186 + satunnaisuus;
         } else if (ylhaallaVetta && oikeallaVetta && vasemmallaVetta) { // maa alhaalla
-            return 184;
+            return 184 + satunnaisuus;
         } else if (oikeallaVetta && alhaallaVetta && vasemmallaVetta) { // maa ylhaalla
-            return 180;
+            return 180 + satunnaisuus;
         } else if (oikeallaVetta && vasemmallaVetta) {
-            return 192;
+            return 192 + satunnaisuus;
         } else if (oikeallaVetta && alhaallaVetta) {
-            return 172;
+            return 172 + satunnaisuus;
         } else if (oikeallaVetta && ylhaallaVetta) {
-            return 170;
+            return 170 + satunnaisuus;
         } else if (vasemmallaVetta && ylhaallaVetta) {
-            return 176;
+            return 176 + satunnaisuus;
         } else if (vasemmallaVetta && alhaallaVetta) {
-            return 174;
+            return 174 + satunnaisuus;
         } else if (alhaallaVetta && ylhaallaVetta) {
-            return 194;
+            return 194 + satunnaisuus;
         } else if (alhaallaVetta) {
-            return 164;
+            return 164 + satunnaisuus;
         } else if (ylhaallaVetta) {
-            return 160;
+            return 160 + satunnaisuus;
         } else if (vasemmallaVetta) {
-            return 166;
+            return 166 + satunnaisuus;
         } else if (oikeallaVetta) {
-            return 162;
+            return 162 + satunnaisuus;
         }
         if (alkuperainen) {
             return alkuTaulukko[y][x];
@@ -82,12 +82,12 @@ public class PiirrettavanMuokkaaja {
         }
     }
     
-    public int[][] Piirrettava(int[][] piirrettava, boolean[][] visible) {
+    public int[][] Piirrettava(int[][] piirrettava, boolean[][] visible, int[][] satunnaisuus) {
         int[][] palautus = new int[20][20];
         for (int loop = 0; loop < 400; loop++) {
             if (visible[loop / 20][loop % 20]) {
                 if (piirrettava[loop / 20][loop % 20] >= 150) {
-                    palautus[loop / 20][loop % 20] = this.valitseOikeaMaapala(loop / 20, loop % 20, piirrettava, visible);
+                    palautus[loop / 20][loop % 20] = this.valitseOikeaMaapala(loop / 20, loop % 20, piirrettava, visible, satunnaisuus[loop / 20][loop % 20]);
                 } else {
                     palautus[loop / 20][loop % 20] = piirrettava[loop / 20][loop % 20];
                 }

@@ -33,7 +33,7 @@ public class Grafiikka extends JPanel {
     }
     
     private void piirraVastustaja(Graphics graphics) {
-        int[][] piir = piirtaja.Piirrettava(peli.getVastustajanPiirrettava(), peli.getVisible());
+        int[][] piir = piirtaja.Piirrettava(peli.getVastustajanPiirrettava(), peli.getVisible(), peli.getVastustajanMaastonSatunnaisuus());
         for (int loop = 0; loop < 400; loop++) {
             graphics.drawImage(kuvat.get(piir[loop / 20][loop % 20]), (loop % 20) * 20 + 500, (loop / 20) * 20, this);
         }

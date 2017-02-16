@@ -90,6 +90,38 @@ public class KuvanLataaja {
         kuvat.put(190, this.lataa("kuvat/maa_1_saari_osuma.png"));
         kuvat.put(192, this.lataa("kuvat/maa_1_merioikealla_ja_vasemmalla_osuma.png"));
         kuvat.put(194, this.lataa("kuvat/maa_1_merialhaalla_ja_ylhaalla_osuma.png"));
+
+        kuvat.put(60 + 1, this.lataa("kuvat/maa_2_meriylhaalla.png"));
+        kuvat.put(62 + 1, this.lataa("kuvat/maa_2_merioikealla.png"));
+        kuvat.put(64 + 1, this.lataa("kuvat/maa_2_merialhaalla.png"));
+        kuvat.put(66 + 1, this.lataa("kuvat/maa_2_merivasemmalla.png"));
+        kuvat.put(70 + 1, this.lataa("kuvat/maa_2_meriylhaalla_ja_oikealla.png"));
+        kuvat.put(72 + 1, this.lataa("kuvat/maa_2_merialhaalla_ja_oikealla.png"));
+        kuvat.put(74 + 1, this.lataa("kuvat/maa_2_merialhaalla_ja_vasemmalla.png"));
+        kuvat.put(76 + 1, this.lataa("kuvat/maa_2_meriylhaalla_ja_vasemmalla.png"));
+        kuvat.put(80 + 1, this.lataa("kuvat/maa_2_maaylhaalla.png"));
+        kuvat.put(82 + 1, this.lataa("kuvat/maa_2_maaoikealla.png"));
+        kuvat.put(84 + 1, this.lataa("kuvat/maa_2_maaalhaalla.png"));
+        kuvat.put(86 + 1, this.lataa("kuvat/maa_2_maavasemmalla.png"));
+        kuvat.put(90 + 1, this.lataa("kuvat/maa_2_saari.png"));
+        kuvat.put(92 + 1, this.lataa("kuvat/maa_2_merioikealla_ja_vasemmalla.png"));
+        kuvat.put(94 + 1, this.lataa("kuvat/maa_2_merialhaalla_ja_ylhaalla.png"));
+        
+        kuvat.put(160 + 1, this.lataa("kuvat/maa_2_meriylhaalla_osuma.png"));
+        kuvat.put(162 + 1, this.lataa("kuvat/maa_2_merioikealla_osuma.png"));
+        kuvat.put(164 + 1, this.lataa("kuvat/maa_2_merialhaalla_osuma.png"));
+        kuvat.put(166 + 1, this.lataa("kuvat/maa_2_merivasemmalla_osuma.png"));
+        kuvat.put(170 + 1, this.lataa("kuvat/maa_2_meriylhaalla_ja_oikealla_osuma.png"));
+        kuvat.put(172 + 1, this.lataa("kuvat/maa_2_merialhaalla_ja_oikealla_osuma.png"));
+        kuvat.put(174 + 1, this.lataa("kuvat/maa_2_merialhaalla_ja_vasemmalla_osuma.png"));
+        kuvat.put(176 + 1, this.lataa("kuvat/maa_2_meriylhaalla_ja_vasemmalla_osuma.png"));
+        kuvat.put(180 + 1, this.lataa("kuvat/maa_2_maaylhaalla_osuma.png"));
+        kuvat.put(182 + 1, this.lataa("kuvat/maa_2_maaoikealla_osuma.png"));
+        kuvat.put(184 + 1, this.lataa("kuvat/maa_2_maaalhaalla_osuma.png"));
+        kuvat.put(186 + 1, this.lataa("kuvat/maa_2_maavasemmalla_osuma.png"));
+        kuvat.put(190 + 1, this.lataa("kuvat/maa_2_saari_osuma.png"));
+        kuvat.put(192 + 1, this.lataa("kuvat/maa_2_merioikealla_ja_vasemmalla_osuma.png"));
+        kuvat.put(194 + 1, this.lataa("kuvat/maa_2_merialhaalla_ja_ylhaalla_osuma.png"));
     }
     
     private BufferedImage lataa(String tiedosto) {

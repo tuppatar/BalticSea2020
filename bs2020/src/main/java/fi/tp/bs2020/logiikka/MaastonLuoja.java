@@ -12,7 +12,7 @@ import java.util.Random;
 public class MaastonLuoja {
 
     private Random arpoja;
-    private int[][] maasto, piirrettava;
+    private int[][] maasto, piirrettava, maastonSatunnaisuus;
     private Map<Integer, List<Integer>> laivat;
     private PiirtotaulukonLuoja ptl;
     
@@ -22,10 +22,15 @@ public class MaastonLuoja {
         this.piirrettava = new int[20][20];
         laivat = new HashMap<>();
         ptl = new PiirtotaulukonLuoja(arpoja, maasto, piirrettava);
+        this.maastonSatunnaisuus = new int[20][20];
     }
 
     public int[][] getPiirrettava() {
         return piirrettava;
+    }
+
+    public int[][] getMaastonSatunnaisuus() {
+        return maastonSatunnaisuus;
     }
 
     public Map<Integer, List<Integer>> getLaivat() {
@@ -37,10 +42,12 @@ public class MaastonLuoja {
  */    
     public int[][] luoVastustajanMaasto() {
         boolean uudelleen = true;
+        //ptl
         while (uudelleen) {
             teeVesi();
             teeMaa(80);
             ptl.lisaaVesiJaMaa();
+            maastonSatunnaisuus = ptl.getMaastonSatunnaisuus();
             if (teeTalot(3)) {
                 uudelleen = false;
             }
@@ -55,7 +62,7 @@ public class MaastonLuoja {
         return maasto;
     }
 /**
- * EI KÄYTÖSSÄ
+ * EI KÄYTÖSSÄ.
  */
     public int[][] luoPelaajanMaasto() {
         return maasto;
