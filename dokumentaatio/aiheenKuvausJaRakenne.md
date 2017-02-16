@@ -4,4 +4,15 @@ Peliin tulee aloitusvalikko, jossa voi valita esimerkiksi pelattavan valtion tai
 
 Käyttäjät: pelaaja vastaan tietokone. Mahdollisuus laajentaa muotoon pelaaja vastaan pelaaja, mutta pelin luonteen vuoksi tätä toteutusta ei kannata tehdä samalla tietokoneella pelattavaksi. Tietokonevastustajan tekoäly välttelee alueita, joiden vieressä on paljastunut maata, koska lähistöllä on oletettavasti lisää maata. Samoin tekoäly osaa pommittaa lähelle laivapaloja, joihin on jo osuttu.
 
-![Alt text](kaavio.png)
+Luokkakaavio:
+
+![Luokkakaavio](kaavio.png)
+
+Sekvenssikaavio uuden maaston luonnista:
+
+![Sekvenssikaavio 1](sekve_1.png)
+
+Sekvenssikaavio tekoälyn käytöstä:
+
+![Sekvenssikaavio 2](sekve_2.png)
+

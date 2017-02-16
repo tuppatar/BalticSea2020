@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/bs2020.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/gui/Aanet.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/gui/Kayttis.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/gui/KuvanLataaja.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/gui/NappaimistonKuuntelija.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/gui/Grafiikka.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/gui/PiirrettavanMuokkaaja.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/logiikka/MaastonLuoja.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/logiikka/TekoAly.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/logiikka/Peli.java">
+<error line="1" severity="error" message="File length is 234 lines (max allowed is 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/logiikka/TekoAlyLaivalle.java">
+<error line="1" severity="error" message="File length is 218 lines (max allowed is 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/logiikka/TekoAlyMuualle.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/logiikka/LaivanLuoja.java">
+</file>
+<file name="/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/main/java/fi/tp/bs2020/logiikka/PiirtotaulukonLuoja.java">
+</file>
+</checkstyle>

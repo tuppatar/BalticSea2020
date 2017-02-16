@@ -12,6 +12,11 @@ public class NappaimistonKuuntelija implements KeyListener {
     private Component component;
     private Peli peli;
 
+    /**
+     * Näppäimistön painalluksiin reagoiva luokka. Sisältää toistaiseksi toiminnallisuutta joka on tarkoitus siirtää muualle.
+     * @param component Komponentti
+     * @param peli Käynnissä oleva Peli.
+     */
     public NappaimistonKuuntelija(Component component, Peli peli) {
         this.component = component;
         this.peli = peli;
@@ -53,11 +58,11 @@ public class NappaimistonKuuntelija implements KeyListener {
 //            peli.tauko(1000);
             }
             while (peli.getPelaajaOhittaaVuoroja() > 0) {
-                    if (peli.getVastustajaOhittaaVuoroja() == 0) {
-                        peli.pelaaVastustajanVuoro();
-                    } else {
-                        peli.setVastustajaOhittaaVuoroja(peli.getVastustajaOhittaaVuoroja() - 1);
-                    }
+                if (peli.getVastustajaOhittaaVuoroja() == 0) {
+                    peli.pelaaVastustajanVuoro();
+                } else {
+                    peli.setVastustajaOhittaaVuoroja(peli.getVastustajaOhittaaVuoroja() - 1);
+                }
                 peli.setPelaajaOhittaaVuoroja(peli.getPelaajaOhittaaVuoroja() - 1);
             }
         }

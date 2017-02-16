@@ -15,6 +15,12 @@ public class LaivanLuoja {
     private PiirtotaulukonLuoja ptl;
     private int[][] maasto;
     
+    /**
+     * Konstruktori.
+     * @param arpoja    random-olio.
+     * @param maasto    Maasto, johon laiva luodaan.
+     * @param ptl       Piirtotaulukonluoja, joka lisää laivan piirtotaulukkoon.
+     */
     public LaivanLuoja(Random arpoja, int[][] maasto, PiirtotaulukonLuoja ptl) {
         this.arpoja = arpoja;
         this.maasto = maasto;

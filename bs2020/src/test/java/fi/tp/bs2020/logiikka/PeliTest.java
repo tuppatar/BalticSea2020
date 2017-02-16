@@ -136,6 +136,45 @@ public class PeliTest {
         assertFalse(peli.pelaaOmaVuoro());
     }
     
+    @Test
+    public void tarkistaVoittoPalauttaaNollan() {
+        assertEquals(0, peli.tarkistaVoitto());
+    }
+
+    public void tarkistaVoittoPalauttaaHavion() {
+        for (int c = 0; c < 400; c++) {
+            peli.pelaaVastustajanVuoro();
+        }
+        assertEquals(1, peli.tarkistaVoitto());
+    }
+    
+    public void tarkistaVoittoPalauttaaVoiton() {
+        int a = 0;
+        while (a < 400) {
+            peli.setKursoriX(a / 20);
+            peli.setKursoriY(a % 20);
+            if (peli.pelaaOmaVuoro()) {
+                a++;
+            }
+        }
+        assertEquals(2, peli.tarkistaVoitto());
+    }
+    
+    public void tarkistaVoittoPalauttaaTasapelin() {
+        for (int c = 0; c < 400; c++) {
+            peli.pelaaVastustajanVuoro();
+        }
+        int a = 0;
+        while (a < 400) {
+            peli.setKursoriX(a / 20);
+            peli.setKursoriY(a % 20);
+            if (peli.pelaaOmaVuoro()) {
+                a++;
+            }
+        }
+        assertEquals(3, peli.tarkistaVoitto());
+    }
+    
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //

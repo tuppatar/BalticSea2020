@@ -16,6 +16,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 
+/**
+ * Äänistä vastaava luokka. Ääniefektit ja niiden soitto on tarkoitus toteuttaa viimeisenä.
+ */
 public class Aanet implements Runnable {
 
     private String filename;
@@ -24,6 +27,9 @@ public class Aanet implements Runnable {
     int soita;
     boolean aaniLopussa;
     
+    /**
+     * Konstruktori.
+     */
     public Aanet() {
         this.minPrime = 143;
         this.filename = "aanet/.wav";
@@ -51,6 +57,10 @@ public class Aanet implements Runnable {
         //}
     }
     
+    /**
+     * Soittaa äänen.
+     * @param filePath Äänen tiedostonnimi.
+     */
     public void play(String filePath) {
         this.aaniLopussa = false;
         final File file = new File(filePath);

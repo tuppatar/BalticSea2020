@@ -7,11 +7,16 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
 
-
+/**
+ * Kuvat tiedostoista MAP:piin lataava luokka.
+ */
 public class KuvanLataaja {
 
     private Map<Integer, BufferedImage> kuvat;
 
+    /**
+     * Kuvanlataajan konstruktori.
+     */
     public KuvanLataaja() {
         this.kuvat = new HashMap<>();
         this.luoMappi();

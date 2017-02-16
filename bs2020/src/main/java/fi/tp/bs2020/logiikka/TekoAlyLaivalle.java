@@ -15,6 +15,13 @@ public class TekoAlyLaivalle {
     int dy = 0, dx = 0, suunta = 0; //ei määr; 1 = vaakaan; 2 = pystyyn
     boolean osumaHyvaksytty = false, eiVasemmalle = false, eiOikealle = false, eiYlos = false, eiAlas = false;
     
+    /**
+     * Konstruktori.
+     * @param maasto    Maasto, johon ammutaan.
+     * @param mihinY    Laivan kohta y-koordinaatti, johon on jo osuttu.
+     * @param mihinX    Laivan kohta x-koordinaatti, johon on jo osuttu.
+     * @param arpoja    Random-olio.
+     */
     public TekoAlyLaivalle(int[][] maasto, int mihinY, int mihinX, Random arpoja) {
         this.maasto = maasto;
         this.mihinY = mihinY;

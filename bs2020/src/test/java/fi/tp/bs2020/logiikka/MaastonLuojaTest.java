@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -45,7 +46,13 @@ public class MaastonLuojaTest {
     }
 
     @Test
-    public void LuodussaMaastossaMaapalojaOn80() {
+    public void pelaajanMaastoPalautuu() { //Pelaajan maastonluoja ei ole käytössä.
+        int[][] vertaus = new int[20][20];
+        Assert.assertArrayEquals(vertaus, ml.luoPelaajanMaasto());
+    }
+    
+    @Test
+    public void LuodussaMaastossaMaapalojaOn77() {
         int[][] palautus = ml.luoVastustajanMaasto();
         int a = 0;
         for (int b = 0; b < 400; b++) {
@@ -53,24 +60,24 @@ public class MaastonLuojaTest {
                 a++;
             }
         }
-        assertEquals(80, a);
+        assertEquals(77, a);
     }
     
     @Test
-    public void LuodussaPiirtotaulukossaMaapalojaOn80() {
+    public void LuodussaPiirtotaulukossaMaapalojaOn77() {
         int[][] palautus = ml.luoVastustajanMaasto();
         int[][] palautus2 = ml.getPiirrettava();
         int a = 0;
         for (int b = 0; b < 400; b++) {
-            if (palautus2[b / 20][b % 20] == 1) {
+            if (palautus2[b / 20][b % 20] >= 50) {
                 a++;
             }
         }
-        assertEquals(80, a);
+        assertEquals(77, a);
     }
     
     @Test
-    public void LuodussaMaastossaLaivapalojaOn17() {
+    public void LuodussaMaastossaLaivapalojaOn18() {
         int[][] palautus = ml.luoVastustajanMaasto();
         int a = 0;
         for (int b = 0; b < 400; b++) {
@@ -78,20 +85,20 @@ public class MaastonLuojaTest {
                 a++;
             }
         }
-        assertEquals(17, a);
+        assertEquals(18, a);
     }
 
     @Test
-    public void LuodussaPiirtotaulukossaLaivapalojaOn17() {
+    public void LuodussaPiirtotaulukossaLaivapalojaOn18() {
         int[][] palautus = ml.luoVastustajanMaasto();
         int[][] palautus2 = ml.getPiirrettava();
         int a = 0;
         for (int b = 0; b < 400; b++) {
-            if (palautus2[b / 20][b % 20] >= 10) {
+            if (palautus2[b / 20][b % 20] >= 10 && palautus2[b / 20][b % 20] <= 16) {
                 a++;
             }
         }
-        assertEquals(17, a);
+        assertEquals(18, a);
     }
 
     @Test
@@ -128,14 +135,27 @@ public class MaastonLuojaTest {
     }
 
     @Test
-    public void laivaKoordinaattejaPalautuu34() {
+    public void laivaKoordinaattejaPalautuu36() {
         int summa = 0;
         int[][] palautus = ml.luoVastustajanMaasto();
         Map<Integer, List<Integer>> palautusXY = ml.getLaivat();
         for (int hoo: palautusXY.keySet()) {
             summa += palautusXY.get(hoo).size();
         }
-        assertEquals(34, summa);
+        assertEquals(36, summa);
+    }
+    
+    @Test
+    public void maastonSatunnaisuusPalautuuJaSisältääLukujaNollastaKolmeen() {
+        int[][] palautus = ml.luoVastustajanMaasto();
+        int[][] palautus2 = ml.getMaastonSatunnaisuus();
+        int a = 0;
+        for (int b = 0; b < 400; b++) {
+            if (palautus2[b / 20][b % 20] >= 0 && palautus2[b / 20][b % 20] <= 3) {
+                a++;
+            }
+        }
+        assertEquals(400, a);
     }
     
     // TODO add test methods here.

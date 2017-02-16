@@ -17,6 +17,10 @@ public class TekoAly {
     private Map<Integer, Integer> laivaTuhottu;
     private Aanet aanet;
     
+    /**
+     * Konstruktori.
+     * @param arpoja Random-olio. 
+     */
     public TekoAly(Random arpoja) {
         this.arpoja = arpoja;
     }
@@ -24,6 +28,7 @@ public class TekoAly {
     public void setAanet(Aanet aanet) {
         this.aanet = aanet;
     }
+    
 /**
  * Asttaa laivojen koordinaatit muuttujaan ja alustaa tuhottu-MAPin.
  * @param laivanKoordinaatit laivojen koordinaatit.
@@ -115,11 +120,12 @@ public class TekoAly {
         maasto[pal / 20][pal % 20] += 30; // huono tapa                
         return pal;
     }
+    
 /**
  * Tekee tietokonepelaajan siirron. Jos jokin laivan pommitus on kesken, yritetään sitä eli käytetään
  * PommitaLaivaa-luokkaa. Muuten käytetään PommiteanMuualle-luokkaa.
  * @param maasto Pelaajan maasto.
- * @return 
+ * @return Maastopaikan, johon ammutaan.
  */    
     public int siirto(int[][] maasto) {
         int paluuarvo = 0;

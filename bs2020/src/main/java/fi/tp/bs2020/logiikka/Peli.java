@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Peliluokka vastaa pelin kokonaisuuden toiminnallisuudesta.
+ * Peliluokka vastaa pelin kokonaisuuden toiminnallisuudesta. Tämän tulen varmaan vielä jakamaan kahteen erilaisesta
+ * toiminnallisuudesta vastaamaan osaan.
  */
 public class Peli {
     
@@ -20,6 +21,11 @@ public class Peli {
     private TekoAly tekoaly;
     private Aanet aanet;
 
+    /**
+     * Konstruktori.
+     * @param arpoja    Random-olio.
+     * @param aanet     Ääni-olio.
+     */
     public Peli(Random arpoja, Aanet aanet) {
         vastustajanMaasto = new int[20][20];
         vastustajanPiirrettava = new int[20][20];
@@ -54,6 +60,10 @@ public class Peli {
         vastustajaOhittaaVuoroja = 0;
     }
 
+    /**
+     * EI KÄYTÖSSÄ.
+     * @param msecs tauko millisekunteina.
+     */
     public void tauko(int msecs) {
         try {
             Thread.sleep(msecs);
@@ -98,6 +108,10 @@ public class Peli {
         this.kursoriY = ky;
     }
     
+    /**
+     * Pelataan pelaajan oma vuoro.
+     * @return tosi, jos vuoro onnistui (eli kohtaan ei ole ammuttu aikaisemmin).
+     */
     public boolean pelaaOmaVuoro() {
         if (vastustajanMaastoaNakyvissa[kursoriY][kursoriX]) {
             // TULOSTA INFORMAATIO "Olet jo ampunut tänne" tms.
@@ -118,6 +132,9 @@ public class Peli {
         return true;
     }
     
+    /**
+     * Pelataan vastustajan (eli tietokoneen) vuoro.
+     */
     public void pelaaVastustajanVuoro() {
         int ampuu = tekoaly.siirto(pelaajanMaasto);
         //pelaajanMaasto[dy][dx] += 30;
@@ -194,6 +211,10 @@ public class Peli {
         return f;
     }
     
+    /**
+     * Tarkistetaan kierroksen JÄLKEEN, onko jompi kumpi pelaaja voittanut.
+     * @return 0, jos tasapeli, 1, jos vastustaja voitti, 2, jos pelaaja voitti, ja 0, jos ei voittoa.
+     */
     public int tarkistaVoitto() {
         int f = laskeEhjatLaivapalat(pelaajanMaasto);
         int g = laskeEhjatLaivapalat(vastustajanMaasto);

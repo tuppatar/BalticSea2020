@@ -16,6 +16,10 @@ public class MaastonLuoja {
     private Map<Integer, List<Integer>> laivat;
     private PiirtotaulukonLuoja ptl;
     
+    /**
+     * Konstruktori.
+     * @param arpoja    Random-olio. 
+     */
     public MaastonLuoja(Random arpoja) {
         this.arpoja = arpoja;
         this.maasto = new int[20][20];
@@ -63,6 +67,7 @@ public class MaastonLuoja {
     }
 /**
  * EI KÄYTÖSSÄ.
+ * @return maasto.
  */
     public int[][] luoPelaajanMaasto() {
         return maasto;

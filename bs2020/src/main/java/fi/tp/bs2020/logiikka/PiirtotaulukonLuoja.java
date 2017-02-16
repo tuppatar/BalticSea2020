@@ -3,7 +3,7 @@ package fi.tp.bs2020.logiikka;
 import java.util.Random;
 
 
-/*
+/**
  * Tämä luokka lisää luotavat elementit piirtotaulukkoon. Piirtotaulukko on erotettu maastotaulukosta,
  * koska eri toiminnallisuuksia on vain muutama, mutta samalla toiminnallisuudella voi olla lukemattomia
  * erilaisia ulkoasuja.
@@ -13,19 +13,26 @@ public class PiirtotaulukonLuoja {
     private Random arpoja;
     private int[][] maasto, piirrettava, maastonSatunnaisuus;
 
+    /**
+     * Konstruktori.
+     * @param arpoja        Random-olio.
+     * @param maasto        Maasto josta piirtotaulukko luodaan.
+     * @param piirrettava   Piirtotaulukko joka lopuksi palautetaan.
+     */
     public PiirtotaulukonLuoja(Random arpoja, int[][] maasto, int[][] piirrettava) {
         this.arpoja = arpoja;
         this.maasto = maasto;
         this.piirrettava = piirrettava;
         this.maastonSatunnaisuus = new int[20][20];
     }
-/**
- * Valitsee maapalan viereisten palojen mukaisesti ja arpoo lisäksi eri vaihtoehdoista.
- * Metodi on aika pitkä mutta en näe näin selkeän metodin pilkkomista järkeväksi?
- * @param y     y-koordinaatti.
- * @param x     x-koordinaatti.
- * @return      palan MAP-indeksi.
- */
+    
+    /**
+     * Valitsee maapalan viereisten palojen mukaisesti ja arpoo lisäksi eri vaihtoehdoista.
+     * Metodi on aika pitkä mutta en näe näin selkeän metodin pilkkomista järkeväksi?
+     * @param y     y-koordinaatti.
+     * @param x     x-koordinaatti.
+     * @return      palan MAP-indeksi.
+     */
     private int valitseOikeaMaapala(int y, int x, int satunnaisuus) {
         boolean vasemmallaVetta = false;
         boolean alhaallaVetta = false;
@@ -108,12 +115,16 @@ public class PiirtotaulukonLuoja {
             }        
         }
     }
+    
 /**
  * Lisää piirtotaulukkoon talon.
+ * @param yy    y-koordinaatti.
+ * @param xx    x-koordinaatti.
  */
     public void lisaaTalo(int yy, int xx) {
         piirrettava[yy][xx] = 9;
     }
+    
  /**
   * Lisää vaakasuuntaisen laivan tai suunnattoman sukellusveneen.
   * @param cc       rakennettava laivan kohta.
@@ -134,6 +145,7 @@ public class PiirtotaulukonLuoja {
             }
         }
     }
+    
  /**
   * Lisää pystysuuntaisen laivan tai suunnattoman sukellusveneen.
   * @param cc       rakennettava laivan kohta.

@@ -10,6 +10,11 @@ public class TekoAlyMuualle {
     private int[][] maasto;
     private Random arpoja;
     
+    /**
+     * Konstruktori.
+     * @param maasto    Maasto, johon ammutaan.
+     * @param arpoja    Random-olio.
+     */
     public TekoAlyMuualle(int[][] maasto, Random arpoja) {
         this.maasto = maasto;
         this.arpoja = arpoja;

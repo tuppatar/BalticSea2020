@@ -82,7 +82,15 @@ public class PiirrettavanMuokkaaja {
         }
     }
     
-    public int[][] Piirrettava(int[][] piirrettava, boolean[][] visible, int[][] satunnaisuus) {
+    /**
+     * Muokkaa piirtotaulukosta näytettävän version sen mukaan, paljon maastoa on näkyvillä. Tällä estetään se, että
+     * pelaaja voisi näkyvästä maapalasta päätellä, onko viereisessä ruudussa vettä vai maata.
+     * @param piirrettava   maaston piirtotaulukko.
+     * @param visible       maaston näkyvyystaulukko.
+     * @param satunnaisuus  maaston satunnaisuustaulukko.
+     * @return              näytettävän piirtotaulukon.
+     */
+    public int[][] piirrettava(int[][] piirrettava, boolean[][] visible, int[][] satunnaisuus) {
         int[][] palautus = new int[20][20];
         for (int loop = 0; loop < 400; loop++) {
             if (visible[loop / 20][loop % 20]) {
