@@ -4,3 +4,8 @@
 /dist/
 /bs2020/nbproject/private/
 /bs2020/nbproject/dist/
+<<<<<<< HEAD
+=======
+/bs2020/target
+.gitignore
+>>>>>>> 568b9c8e233b1a42de85a7ca9d93eab2e7ebcea6

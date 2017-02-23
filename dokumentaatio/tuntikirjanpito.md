@@ -1,4 +1,4 @@
-### Tuntikirjanpito
+﻿### Tuntikirjanpito
 Päivä | Tunnit | Kuvaus
 --------------- | ----- | ------
 19.01.2017 | 1.5h | Tappelua mavenin ja gitin kanssa, myös muutama onnistuminen
@@ -14,4 +14,5 @@ Päivä | Tunnit | Kuvaus
 13.2.2017 | 2.0h | Lisätty sukellusveneet "yhden ruudun laivoiksi". Koodin siistimistä.
 14.2.2017 | 1.0h | Pohdintaa ja kokeilua, miten tekoäly kannattaisi korjata uuden maastomallin mukaiseksi.
 15.2.2017 | 4.5h | Edellinen korjattu siten, että tekoälyyn ei puututtu vaan pelaajan näkemä vastustajan maasto tarkentuu vähitellen. Tämän lisäksi koodin siistimistä ja grafiikan uudelleenpiirtelyä paremmaksi ja selkeämmäksi.
+16.2.2017 | 2.5h | Testien,raporttien ja dokumenttien päivitystä.
 ... | ... | ...

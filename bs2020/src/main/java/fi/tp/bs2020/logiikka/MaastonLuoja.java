@@ -44,25 +44,26 @@ public class MaastonLuoja {
  * Tässä luodaan vastustajan maasto, toistaiseksi vielä pelaajankin.
  * @return vastustajan maasto.
  */    
-    public int[][] luoVastustajanMaasto() {
+    public int[][] luoVastustajanMaasto(PeliMoodi moodi) {
         boolean uudelleen = true;
         //ptl
         while (uudelleen) {
+            uudelleen = false;
             teeVesi();
-            teeMaa(80);
+            teeMaa(moodi.getMaata(), moodi.getHajanaisuusArvo());
             ptl.lisaaVesiJaMaa();
             maastonSatunnaisuus = ptl.getMaastonSatunnaisuus();
-            if (teeTalot(3)) {
-                uudelleen = false;
+            if (!teeTalot(moodi.getTaloja())) {
+                uudelleen = true;
+            }
+            laivat.clear();
+            LaivanLuoja ll = new LaivanLuoja(arpoja, maasto, ptl);
+            for (int loop = 0; loop < moodi.getLaivoja().size(); loop++) {
+                if (!ll.teeLaiva(laivat, moodi.getLaivoja().get(loop), loop)) {
+                    uudelleen = true;
+                }
             }
         }
-        LaivanLuoja ll = new LaivanLuoja(arpoja, maasto, ptl);
-        ll.teeLaiva(laivat, 5, 0);
-        ll.teeLaiva(laivat, 4, 1);
-        ll.teeLaiva(laivat, 3, 2);
-        ll.teeLaiva(laivat, 3, 3);
-        ll.teeLaiva(laivat, 2, 4);
-        ll.teeLaiva(laivat, 1, 5);
         return maasto;
     }
 /**
@@ -83,11 +84,11 @@ public class MaastonLuoja {
 /**
  * Luodaan maastoon 80 maapalaa järkeviksi saariksi.
  */
-    private void teeMaa(int maapaloja) {
+    private void teeMaa(int maapaloja, int hajanaisuusArvo) {
         int a = 0;
         while (a < maapaloja) {
             int x = 0, y = 0;
-            int tod = arpoja.nextInt(15);
+            int tod = arpoja.nextInt(hajanaisuusArvo); // tämä arvo määrittää miten hajanaista saaristo on.
             if (tod == 0 || a == 0) {
                 x = arpoja.nextInt(20);
                 y = arpoja.nextInt(20);
