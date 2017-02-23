@@ -15,4 +15,6 @@ Päivä | Tunnit | Kuvaus
 14.2.2017 | 1.0h | Pohdintaa ja kokeilua, miten tekoäly kannattaisi korjata uuden maastomallin mukaiseksi.
 15.2.2017 | 4.5h | Edellinen korjattu siten, että tekoälyyn ei puututtu vaan pelaajan näkemä vastustajan maasto tarkentuu vähitellen. Tämän lisäksi koodin siistimistä ja grafiikan uudelleenpiirtelyä paremmaksi ja selkeämmäksi.
 16.2.2017 | 2.5h | Testien,raporttien ja dokumenttien päivitystä.
+21.2.2017 | 2.0h | Odottamattoman bugin huomaamisen johdosta muiden bugien etsintää ja testausta "manuaalisesti".
+23.2.2017 | 5.0h | PeliMoodi-luokan luonti. Nyt parametrien arvojen (saaria, taloja, laivoja, saariston rikkonaisuuden aste) muuttaminen on helppoa ja nämä voi lisätä pelin menuun. Lisäksi testien päivitys niin, että testeillekin käy kaikki arvot. Jarin luonti.
 ... | ... | ...
