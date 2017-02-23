@@ -29,7 +29,7 @@ public class PeliMoodi {
      */
     public void asetaMuuttujat(int moodi, int hajanaisuus) {
         this.hajanaisuusArvo = 15;
-        if (moodi == 1) {
+        if (moodi == 0) {
             maata = 80;
             taloja = 3;
             laivoja.add(5);
@@ -39,7 +39,7 @@ public class PeliMoodi {
             laivoja.add(2);
             laivoja.add(1);
         }
-        if (moodi == 2) {
+        if (moodi == 1) {
             maata = 140;
             taloja = 6;
             laivoja.add(6);
@@ -51,14 +51,26 @@ public class PeliMoodi {
             laivoja.add(2);
             laivoja.add(1);
         }
+        if (moodi == 2) {
+            maata = 180;
+            taloja = 10;
+            laivoja.add(6);
+            laivoja.add(5);
+            laivoja.add(4);
+            laivoja.add(4);
+            laivoja.add(3);
+            laivoja.add(3);
+            laivoja.add(2);
+            laivoja.add(1);
+        }
         if (hajanaisuus == 2) {
-            this.hajanaisuusArvo = 15;
+            this.hajanaisuusArvo = 10;
         }
         if (hajanaisuus == 1) {
-            this.hajanaisuusArvo = 35;
+            this.hajanaisuusArvo = 40;
         }
         if (hajanaisuus == 0) {
-            this.hajanaisuusArvo = 55;
+            this.hajanaisuusArvo = 70;
         }
     }
 

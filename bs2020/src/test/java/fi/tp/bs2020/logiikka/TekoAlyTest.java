@@ -47,8 +47,9 @@ public class TekoAlyTest {
         maasto = peli.getPelaajanMaasto();
         ai = new TekoAly(arpoja);
         ai.setAanet(aanet);
+        PeliMoodi moodi = new PeliMoodi(2, 0);
         MaastonLuoja ml = new MaastonLuoja(arpoja);
-        ml.luoVastustajanMaasto();
+        ml.luoVastustajanMaasto(moodi);
         laivanKoordinaatit = ml.getLaivat();
     }
     

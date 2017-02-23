@@ -42,6 +42,7 @@ public class MaastonLuoja {
     }
 /**
  * Tässä luodaan vastustajan maasto, toistaiseksi vielä pelaajankin.
+ * @param  moodi    pelimoodi mitä käytetään, vaikuttaa eri palojen määrään ja maaston saariston rikkonaisuuteen.
  * @return vastustajan maasto.
  */    
     public int[][] luoVastustajanMaasto(PeliMoodi moodi) {

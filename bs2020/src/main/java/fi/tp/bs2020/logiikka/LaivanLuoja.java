@@ -117,6 +117,7 @@ public class LaivanLuoja {
  * @param laivat    laivojen MAP
  * @param pituus    laivan pituus
  * @param avain     laivan MAP-avain 
+ * @return boolean  onnistuuko laivan luonti kyseiseen maastoon, kokeillaan 10000 kertaa.
  */    
     public boolean teeLaiva(Map laivat, int pituus, int avain) {
         int kokeiluKertoja = 10000;

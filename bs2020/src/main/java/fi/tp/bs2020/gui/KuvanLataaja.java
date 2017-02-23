@@ -3,6 +3,7 @@ package fi.tp.bs2020.gui;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
@@ -131,8 +132,9 @@ public class KuvanLataaja {
     
     private BufferedImage lataa(String tiedosto) {
         BufferedImage palautus = null;
-        try {                
-            palautus = ImageIO.read(new File(tiedosto));
+        try {
+            InputStream is = getClass().getClassLoader().getResourceAsStream(tiedosto);
+            palautus = ImageIO.read(is);
         } catch (IOException ex) {
             // handle exception...
         }

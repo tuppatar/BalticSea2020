@@ -45,8 +45,9 @@ public class TekoAlyLaivalleTest {
         Aanet aanet = new Aanet();
         peli = new Peli(arpoja, aanet);
         maasto = peli.getPelaajanMaasto();
+        PeliMoodi moodi = new PeliMoodi(2, 0);
         MaastonLuoja ml = new MaastonLuoja(arpoja);
-        ml.luoVastustajanMaasto();
+        ml.luoVastustajanMaasto(moodi);
         laivanKoordinaatit = ml.getLaivat();
     }
     
