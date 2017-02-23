@@ -1,6 +1,6 @@
-Käytä nuolinäppäimiä liikkuaksesi ja returnia ampuaksesi.
+Pelissä ei vielä ole menua, joten käyttöohje on helppo: Käytä nuolinäppäimiä liikkuaksesi ja returnia ampuaksesi. Jo ammuttuun paikkaan vahingossa ampuminen ei tee mitään eikä vie sinulta vuoroa.
 
-Saarilla on taloja, joihin osuessasi sinulta jää kolme vuoroa väliin.
+Saarilla on taloja, joihin osuessasi sinulta jää kolme vuoroa väliin. Nyt olevassa moodissa on 10 taloa.
 
-Pelissä täytyy tuhota viisi laivaa ja yksi sukellusvene.
+Pelissä täytyy tuhota moodista riippuen tietty määrä laivoja ja yksi sukellusvene. Nyt laivoja on seitsemän.
 
