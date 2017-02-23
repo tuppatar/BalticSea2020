@@ -9,7 +9,9 @@ Löysin yhden laivansijoittelubugin ja korjasin sen. Bugi oli sellainen että si
 
 Lisäsin myös PeliMoodi-luokan, jossa on arvoina pelin muuttujia: Maapalojen, talojen ja erilaisten laivojen lukumäärät sekä saariston "rikkonaisuuteen" vaikuttava arvo. On tarkoitus, että nämä pääsee muuttamaan pelin menusta. Muutin myös testit sellaisiksi, että niitä ei tarvitse muuttaa arvojen muuttuessa.
 
-Pelilogiikka alkaa mielestäni olla täysin valmis. Viimeiselle viikolle jää pelin menun rakentelu, jossa voi muuttaa parametrejä sekä käynnistää uuden pelin. Samoin peliin olisi tarkoitus tulla pelitilanteen informaatiota esitettäväksi pelin aikana.
+Pelilogiikka alkaa mielestäni olla täysin valmis. Viimeiselle viikolle jää pelin menun rakentelu, jossa voi muuttaa parametrejä sekä käynnistää uuden pelin. Samoin peliin olisi tarkoitus tulla pelitilanteen informaatiota esitettäväksi pelin aikana. Peli myös palautuu menuun pelin päättyessä. Pelin päättymisen tarkistus on jo valmis mutta ei käytössä.
+
+Jar-tiedoston luonti ja kuvien lataaminen resources-kansiosta ilman File-luokkaa onnistui.
 
 Dokumentaatio:
 
