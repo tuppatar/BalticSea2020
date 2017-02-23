@@ -20,7 +20,8 @@ public class Peli {
     private Map<Integer, List<Integer>> vastustajanLaivojenKoordinaatit, omienLaivojenKoordinaatit;
     private TekoAly tekoaly;
     private Aanet aanet;
-
+    private PeliMoodi moodi;
+    
     /**
      * Konstruktori.
      * @param arpoja    Random-olio.
@@ -33,20 +34,21 @@ public class Peli {
         pelaajanPiirrettava = new int[20][20];
         vastustajanMaastoaNakyvissa = new boolean[20][20];
         
+        this.moodi = new PeliMoodi(2, 0);
         this.arpoja = arpoja;
         this.aanet = aanet;
         ml = new MaastonLuoja(arpoja);
         tekoaly = new TekoAly(arpoja);
         tekoaly.setAanet(aanet);
         
-        vastustajanMaasto = ml.luoVastustajanMaasto();
+        vastustajanMaasto = ml.luoVastustajanMaasto(moodi);
         vastustajanPiirrettava = ml.getPiirrettava();
         vastustajanMaastonSatunnaisuus = ml.getMaastonSatunnaisuus();
         vastustajanLaivojenKoordinaatit = ml.getLaivat(); //vastustajan laivat
 
         ml = new MaastonLuoja(arpoja);
         // pelaajanMaasto = ml.luoPelaajanMaasto(); // Laivojen omaa asettelua ei ole vielä toteutettu.
-        pelaajanMaasto = ml.luoVastustajanMaasto(); // Laivojen omaa asettelua ei ole vielä toteutettu.
+        pelaajanMaasto = ml.luoVastustajanMaasto(moodi); // Laivojen omaa asettelua ei ole vielä toteutettu.
         pelaajanPiirrettava = ml.getPiirrettava();
         omienLaivojenKoordinaatit = ml.getLaivat(); // omat laivat
         
@@ -70,6 +72,10 @@ public class Peli {
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }        
+    }
+
+    public PeliMoodi getMoodi() {
+        return moodi;
     }
 
     public int[][] getVastustajanMaastonSatunnaisuus() {

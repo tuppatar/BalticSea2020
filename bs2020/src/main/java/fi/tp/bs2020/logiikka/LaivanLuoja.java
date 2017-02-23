@@ -29,7 +29,7 @@ public class LaivanLuoja {
     
     private boolean teeLaivaPystyyn(Map laivat, int pituus, int avain) {
         int xx = arpoja.nextInt(20);
-        int yy = arpoja.nextInt(20 - pituus);
+        int yy = arpoja.nextInt(21 - pituus); // korjattu 20 -> 21
         boolean alatee = false;
         for (int cc = 0; cc < pituus; cc++) {
             if (maasto[yy + cc][xx] > 0) {
@@ -51,7 +51,7 @@ public class LaivanLuoja {
                 alatee = true;
             }
         }
-        if ((yy + pituus) < 19) {
+        if ((yy + pituus) < 20) { // korjattu 19 -> 20
             if (maasto[yy + pituus][xx] == 2) {
                 alatee = true;
             }
@@ -71,7 +71,7 @@ public class LaivanLuoja {
     }
 
     private boolean teeLaivaVaakaan(Map laivat, int pituus, int avain) {
-        int xx = arpoja.nextInt(20 - pituus);
+        int xx = arpoja.nextInt(21 - pituus); // korjattu 20 -> 21
         int yy = arpoja.nextInt(20);
         boolean alatee = false;
         for (int cc = 0; cc < pituus; cc++) {
@@ -94,7 +94,7 @@ public class LaivanLuoja {
                 alatee = true;
             }
         }
-        if ((xx + pituus) < 19) {
+        if ((xx + pituus) < 20) { // korjattu 19 -> 20
             if (maasto[yy][xx + pituus] == 2) {
                 alatee = true;
             }
@@ -118,16 +118,22 @@ public class LaivanLuoja {
  * @param pituus    laivan pituus
  * @param avain     laivan MAP-avain 
  */    
-    public void teeLaiva(Map laivat, int pituus, int avain) {
-        boolean onnistus = false;
-        while (!onnistus) {
+    public boolean teeLaiva(Map laivat, int pituus, int avain) {
+        int kokeiluKertoja = 10000;
+        while (kokeiluKertoja > 0) {
             int suunta = arpoja.nextInt(2);
             if (suunta == 0) {
-                onnistus = teeLaivaPystyyn(laivat, pituus, avain);
+                if (teeLaivaPystyyn(laivat, pituus, avain)) {
+                    return true;
+                }
             } else {
-                onnistus = teeLaivaVaakaan(laivat, pituus, avain);
+                if (teeLaivaVaakaan(laivat, pituus, avain)) {
+                    return true;
+                }
             }
+            kokeiluKertoja--;
         }
+        return false;
     }
     
 }
