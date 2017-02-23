@@ -1,1 +1,1 @@
-Koodi sisältää varsin paljon satunnaisuutta. Olen tämän takia testannut koodia myös manuaalisesti.
+Koodi sisältää varsin paljon satunnaisuutta. Olen tämän takia testannut koodia myös manuaalisesti esimerkiksi muuttamalla randomarvoja raja-arvoiksi ja niistä yli ja katsonut, että kaikki menee kuten pitää.
