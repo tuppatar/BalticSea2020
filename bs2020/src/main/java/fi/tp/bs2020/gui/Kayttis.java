@@ -1,6 +1,7 @@
 package fi.tp.bs2020.gui;
 
 import fi.tp.bs2020.logiikka.Peli;
+import fi.tp.bs2020.logiikka.PeliRunko;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.util.Random;
@@ -13,7 +14,9 @@ public class Kayttis implements Runnable {
     private JFrame frame;
     private Grafiikka piirtoalusta;
     private Peli peli;
-    private Grafiikka piiro;
+    private Grafiikka grafik;
+    private NappainTapahtuma nt;
+    private PeliRunko pelirunko;
     
     private Aanet aanet;
     
@@ -25,20 +28,19 @@ public class Kayttis implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Palusta");
-        frame.setPreferredSize(new Dimension(1000, 600));
+        frame.setPreferredSize(new Dimension(1200, 700));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         Random arpoja = new Random();
         
-        aanet = new Aanet();
-        aanet.setSoita(2);
-        //new Thread(aanet).start();
-        //aanet.start();
-        peli = new Peli(arpoja, aanet);
+        pelirunko = new PeliRunko(arpoja);
+        nt = new NappainTapahtuma();
+        nt.setFrame(frame);
         luoKomponentit(frame.getContentPane());
         lisaaKuuntelijat();
 
-        //Test
+        //new Thread(aanet).start();
+        //aanet.start();
         //aanet.play("erased.wav");
         //aanet.soitaMenumusiikki(); //AANET
         //aanet.play("Musa.mp3");
@@ -48,14 +50,13 @@ public class Kayttis implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
-        piirtoalusta = new Grafiikka(peli);
+        piirtoalusta = new Grafiikka(pelirunko);
         container.add(piirtoalusta);
-        this.piiro = piirtoalusta;
-        // this.aanet = new Aanet(); AANET
+        this.grafik = piirtoalusta;
     }
 
     private void lisaaKuuntelijat() {
-        frame.addKeyListener(new NappaimistonKuuntelija(this.piiro, peli));
+        frame.addKeyListener(new NappaimistonKuuntelija(this.grafik, pelirunko, nt));
     }
 
     public JFrame getFrame() {

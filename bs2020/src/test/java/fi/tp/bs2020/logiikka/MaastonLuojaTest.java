@@ -58,7 +58,7 @@ public class MaastonLuojaTest {
     
     @Test
     public void LuodussaMaastossaMaapalojaOnOikeaMaara() {
-        PeliMoodi moodi = new PeliMoodi(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
+        PeliMuuttujat moodi = new PeliMuuttujat(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
         int[][] palautus = ml.luoVastustajanMaasto(moodi);
         int a = 0;
         for (int b = 0; b < 400; b++) {
@@ -71,7 +71,7 @@ public class MaastonLuojaTest {
     
     @Test
     public void LuodussaPiirtotaulukossaMaapalojaOnOikeaMaara() {
-        PeliMoodi moodi = new PeliMoodi(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
+        PeliMuuttujat moodi = new PeliMuuttujat(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
         int[][] palautus = ml.luoVastustajanMaasto(moodi);
         int[][] palautus2 = ml.getPiirrettava();
         int a = 0;
@@ -85,7 +85,7 @@ public class MaastonLuojaTest {
     
     @Test
     public void LuodussaMaastossaLaivapalojaOnOikeaMaara() {
-        PeliMoodi moodi = new PeliMoodi(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
+        PeliMuuttujat moodi = new PeliMuuttujat(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
         int[][] palautus = ml.luoVastustajanMaasto(moodi);
         int a = 0;
         for (int b = 0; b < 400; b++) {
@@ -104,7 +104,7 @@ public class MaastonLuojaTest {
 
     @Test
     public void LuodussaPiirtotaulukossaLaivapalojaOnOikeaMaara() {
-        PeliMoodi moodi = new PeliMoodi(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
+        PeliMuuttujat moodi = new PeliMuuttujat(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
         int[][] palautus = ml.luoVastustajanMaasto(moodi);
         int[][] palautus2 = ml.getPiirrettava();
         int a = 0;
@@ -124,7 +124,7 @@ public class MaastonLuojaTest {
 
     @Test
     public void LaivaPalatSijoittuvatSaantojenMukaisesti() { // eli ei vierekkäin tai peräkkäin, jolloin vierekkäisiä paloja on yhteensä 12.
-        PeliMoodi moodi = new PeliMoodi(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
+        PeliMuuttujat moodi = new PeliMuuttujat(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
         int[][] palautus = ml.luoVastustajanMaasto(moodi);
         int summa = 0, summa2 = 0;
         for (int y = 0; y < 20; y++) { // testaus toiseen suuntaan
@@ -165,7 +165,7 @@ public class MaastonLuojaTest {
     @Test
     public void laivaKoordinaattejaPalautuuOikeaMaara() {
         int summa = 0, laivapaloja = 0;
-        PeliMoodi moodi = new PeliMoodi(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
+        PeliMuuttujat moodi = new PeliMuuttujat(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
         int[][] palautus = ml.luoVastustajanMaasto(moodi);
         Map<Integer, List<Integer>> palautusXY = ml.getLaivat();
         for (int hoo: palautusXY.keySet()) {
@@ -181,7 +181,7 @@ public class MaastonLuojaTest {
     
     @Test
     public void maastonSatunnaisuusPalautuuJaSisältääLukujaNollastaKolmeen() {
-        PeliMoodi moodi = new PeliMoodi(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
+        PeliMuuttujat moodi = new PeliMuuttujat(arpoja.nextInt(this.moodiEriMoodienLukuMaara), arpoja.nextInt(this.moodiEriHajanaisuuksienLukumaara));
         int[][] palautus = ml.luoVastustajanMaasto(moodi);
         int[][] palautus2 = ml.getMaastonSatunnaisuus();
         int a = 0;

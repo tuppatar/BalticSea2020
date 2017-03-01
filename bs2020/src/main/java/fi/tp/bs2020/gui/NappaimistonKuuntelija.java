@@ -1,6 +1,7 @@
 package fi.tp.bs2020.gui;
 
 import fi.tp.bs2020.logiikka.Peli;
+import fi.tp.bs2020.logiikka.PeliRunko;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -10,16 +11,21 @@ import java.awt.event.KeyListener;
 public class NappaimistonKuuntelija implements KeyListener {
 
     private Component component;
-    private Peli peli;
-
+    private PeliRunko pelirunko;
+    private NappainTapahtuma nt;
+    private boolean released;
+    
     /**
      * Näppäimistön painalluksiin reagoiva luokka. Sisältää toistaiseksi toiminnallisuutta joka on tarkoitus siirtää muualle.
      * @param component Komponentti
      * @param peli Käynnissä oleva Peli.
      */
-    public NappaimistonKuuntelija(Component component, Peli peli) {
+    public NappaimistonKuuntelija(Component component, PeliRunko pelirunko, NappainTapahtuma nt) {
         this.component = component;
-        this.peli = peli;
+        this.pelirunko = pelirunko;
+        this.nt = nt;
+        nt.setPelirunko(pelirunko);
+        this.released = true;
         //this.kuvio = kuvio;
     }
     
@@ -31,54 +37,28 @@ public class NappaimistonKuuntelija implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            if (peli.getKursoriX() > 0) {
-                peli.setKursoriX(peli.getKursoriX() - 1);
-            }
+            nt.peliVasemmalle();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if (peli.getKursoriX() < 19) {
-                peli.setKursoriX(peli.getKursoriX() + 1);
-            }
+            nt.peliOikealle();
         } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-            if (peli.getKursoriY() > 0) {
-                peli.setKursoriY(peli.getKursoriY() - 1);
-            }
+            nt.peliYlos();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            if (peli.getKursoriY() < 19) {
-                peli.setKursoriY(peli.getKursoriY() + 1);
-            }
+            nt.peliAlas();
         } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (peli.pelaaOmaVuoro()) {
-                component.repaint();
-                if (peli.getVastustajaOhittaaVuoroja() == 0) {
-                    peli.pelaaVastustajanVuoro();
-                } else {
-                    peli.setVastustajaOhittaaVuoroja(peli.getVastustajaOhittaaVuoroja() - 1);
-                }
-                //component.repaint();        
-//            peli.tauko(1000);
-            }
-            while (peli.getPelaajaOhittaaVuoroja() > 0) {
-                if (peli.getVastustajaOhittaaVuoroja() == 0) {
-                    peli.pelaaVastustajanVuoro();
-                } else {
-                    peli.setVastustajaOhittaaVuoroja(peli.getVastustajaOhittaaVuoroja() - 1);
-                }
-                peli.setPelaajaOhittaaVuoroja(peli.getPelaajaOhittaaVuoroja() - 1);
-            }
+            nt.enter(component);
+        } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            nt.escape(component);
+        } else if (e.getKeyCode() == KeyEvent.VK_E) {
+            nt.nappainE(component);
+        } else if (e.getKeyCode() == KeyEvent.VK_K) {
+            nt.nappainK(component);
         }
-
         component.repaint();
-        
-        int kumpi = peli.tarkistaVoitto(); // 1 = pelaaja voitti; 2 = kone voitti; 3 = tasapeli
-        if (kumpi > 0) {
-            //peliloppuu
-            System.out.println("peli loppuu");
-        }
-        
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        this.released = true;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }    
 }

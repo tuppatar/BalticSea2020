@@ -45,7 +45,7 @@ public class MaastonLuoja {
  * @param  moodi    pelimoodi mitä käytetään, vaikuttaa eri palojen määrään ja maaston saariston rikkonaisuuteen.
  * @return vastustajan maasto.
  */    
-    public int[][] luoVastustajanMaasto(PeliMoodi moodi) {
+    public int[][] luoVastustajanMaasto(PeliMuuttujat moodi) {
         boolean uudelleen = true;
         //ptl
         while (uudelleen) {

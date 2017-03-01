@@ -20,21 +20,21 @@ public class Peli {
     private Map<Integer, List<Integer>> vastustajanLaivojenKoordinaatit, omienLaivojenKoordinaatit;
     private TekoAly tekoaly;
     private Aanet aanet;
-    private PeliMoodi moodi;
+    private PeliMuuttujat moodi;
     
     /**
      * Konstruktori.
      * @param arpoja    Random-olio.
      * @param aanet     Ääni-olio.
      */
-    public Peli(Random arpoja, Aanet aanet) {
+    public Peli(Random arpoja, Aanet aanet, PeliMuuttujat moodi) {
         vastustajanMaasto = new int[20][20];
         vastustajanPiirrettava = new int[20][20];
         pelaajanMaasto = new int[20][20];
         pelaajanPiirrettava = new int[20][20];
         vastustajanMaastoaNakyvissa = new boolean[20][20];
         
-        this.moodi = new PeliMoodi(2, 0);
+        this.moodi = moodi;
         this.arpoja = arpoja;
         this.aanet = aanet;
         ml = new MaastonLuoja(arpoja);
@@ -74,7 +74,7 @@ public class Peli {
         }        
     }
 
-    public PeliMoodi getMoodi() {
+    public PeliMuuttujat getMoodi() {
         return moodi;
     }
 
