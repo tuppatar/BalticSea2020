@@ -6,7 +6,10 @@ package fi.tp.bs2020.gui;
  */
 public class PiirrettavanMuokkaaja {
 
-    private int valitseOikeaMaapala(int y, int x, int[][] alkuTaulukko, boolean[][] visible, int satunnaisuus) {
+    private int valitseOikeaMaapala(int y, int x, int[][] alkuTaulukko, boolean[][] visible, int satunnaisuus, int tilanne) {
+        if (tilanne >= 20) {
+            return alkuTaulukko[y][x];
+        }
         boolean vasemmallaVetta = false;
         boolean alhaallaVetta = false;
         boolean ylhaallaVetta = false;
@@ -90,12 +93,12 @@ public class PiirrettavanMuokkaaja {
      * @param satunnaisuus  maaston satunnaisuustaulukko.
      * @return              näytettävän piirtotaulukon.
      */
-    public int[][] piirrettava(int[][] piirrettava, boolean[][] visible, int[][] satunnaisuus) {
+    public int[][] piirrettava(int[][] piirrettava, boolean[][] visible, int[][] satunnaisuus, int tilanne) {
         int[][] palautus = new int[20][20];
         for (int loop = 0; loop < 400; loop++) {
             if (visible[loop / 20][loop % 20]) {
                 if (piirrettava[loop / 20][loop % 20] >= 150) {
-                    palautus[loop / 20][loop % 20] = this.valitseOikeaMaapala(loop / 20, loop % 20, piirrettava, visible, satunnaisuus[loop / 20][loop % 20]);
+                    palautus[loop / 20][loop % 20] = this.valitseOikeaMaapala(loop / 20, loop % 20, piirrettava, visible, satunnaisuus[loop / 20][loop % 20], tilanne);
                 } else {
                     palautus[loop / 20][loop % 20] = piirrettava[loop / 20][loop % 20];
                 }

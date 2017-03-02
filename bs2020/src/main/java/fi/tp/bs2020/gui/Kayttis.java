@@ -28,7 +28,7 @@ public class Kayttis implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Palusta");
-        frame.setPreferredSize(new Dimension(1200, 700));
+        frame.setPreferredSize(new Dimension(1220, 700));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         Random arpoja = new Random();

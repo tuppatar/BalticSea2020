@@ -144,7 +144,7 @@ public class TekoAlyMuualle {
         boolean osumaHyvaksytty = false;
         int dy = 0;
         int dx = 0;
-        int kokeillaan = 1000;
+        int kokeillaan = 3000;
         while (!osumaHyvaksytty) {
             dx = arpoja.nextInt(20);
             dy = arpoja.nextInt(20);

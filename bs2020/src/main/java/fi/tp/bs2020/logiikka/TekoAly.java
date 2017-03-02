@@ -16,6 +16,7 @@ public class TekoAly {
     private Map<Integer, List<Integer>> laivanKoordinaatit;
     private Map<Integer, Integer> laivaTuhottu;
     private Aanet aanet;
+    private int viesti;
     
     /**
      * Konstruktori.
@@ -23,10 +24,15 @@ public class TekoAly {
      */
     public TekoAly(Random arpoja) {
         this.arpoja = arpoja;
+        this.viesti = 0;
     }
 
     public void setAanet(Aanet aanet) {
         this.aanet = aanet;
+    }
+
+    public int getViesti() {
+        return viesti;
     }
     
 /**
@@ -76,8 +82,10 @@ public class TekoAly {
             for (int laiva: laivanKoordinaatit.keySet()) {
                 for (int a = 0; a < (laivanKoordinaatit.get(laiva).size() / 2); a++) {
                     if (laivanKoordinaatit.get(laiva).get(a * 2) == dy && laivanKoordinaatit.get(laiva).get(a * 2 + 1) == dx) {
+                        viesti = 2;
                         laivaTuhottu.replace(laiva, 1);
                         if (laivanKoordinaatit.get(laiva).size() == 2) { //sukellusvene
+                            viesti = 6;
                             laivaTuhottu.replace(laiva, 2);
                         }
                     }
@@ -94,6 +102,7 @@ public class TekoAly {
             }
         }
         if (kaikki) {
+            viesti = 4;
             laivaTuhottu.replace(laiva, 2);
             //aanet.play("erased.wav"); //////// äänitesti
             //aanet.run();
@@ -107,6 +116,9 @@ public class TekoAly {
         TekoAlyLaivalle tal = new TekoAlyLaivalle(maasto, (yksiKohtaMihinOsuttu / 20), (yksiKohtaMihinOsuttu % 20), arpoja);
         int pal = tal.ammutaanLaivaa();
 
+        if (maasto[pal / 20][pal % 20] == 2) {
+            viesti = 2;
+        }
         maasto[pal / 20][pal % 20] += 30; // huono tapa
         this.paivitaTuhottu(mikaLaivaKesken, maasto);
         return pal;
@@ -129,7 +141,7 @@ public class TekoAly {
  */    
     public int siirto(int[][] maasto) {
         int paluuarvo = 0;
-
+        viesti = 0;
         aanet.setSoita(1);
         //new Thread(aanet).start(); /// TEST
 

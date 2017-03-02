@@ -1,6 +1,7 @@
 package fi.tp.bs2020.logiikka;
 
 import fi.tp.bs2020.gui.Aanet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -16,7 +17,7 @@ public class Peli {
     private int[][] vastustajanMaastonSatunnaisuus;
     private boolean[][] vastustajanMaastoaNakyvissa;
     private MaastonLuoja ml;
-    private int kursoriX, kursoriY, pelaajaOhittaaVuoroja, vastustajaOhittaaVuoroja;
+    private int kursoriX = 0, kursoriY = 0, pelaajaOhittaaVuoroja = 0, vastustajaOhittaaVuoroja = 0, omaviesti = 0, vastustajanviesti = 0;
     private Map<Integer, List<Integer>> vastustajanLaivojenKoordinaatit, omienLaivojenKoordinaatit;
     private TekoAly tekoaly;
     private Aanet aanet;
@@ -33,21 +34,19 @@ public class Peli {
         pelaajanMaasto = new int[20][20];
         pelaajanPiirrettava = new int[20][20];
         vastustajanMaastoaNakyvissa = new boolean[20][20];
-        
         this.moodi = moodi;
         this.arpoja = arpoja;
         this.aanet = aanet;
-        ml = new MaastonLuoja(arpoja);
         tekoaly = new TekoAly(arpoja);
         tekoaly.setAanet(aanet);
         
+        ml = new MaastonLuoja(arpoja);
         vastustajanMaasto = ml.luoVastustajanMaasto(moodi);
         vastustajanPiirrettava = ml.getPiirrettava();
         vastustajanMaastonSatunnaisuus = ml.getMaastonSatunnaisuus();
         vastustajanLaivojenKoordinaatit = ml.getLaivat(); //vastustajan laivat
 
         ml = new MaastonLuoja(arpoja);
-        // pelaajanMaasto = ml.luoPelaajanMaasto(); // Laivojen omaa asettelua ei ole vielä toteutettu.
         pelaajanMaasto = ml.luoVastustajanMaasto(moodi); // Laivojen omaa asettelua ei ole vielä toteutettu.
         pelaajanPiirrettava = ml.getPiirrettava();
         omienLaivojenKoordinaatit = ml.getLaivat(); // omat laivat
@@ -56,22 +55,6 @@ public class Peli {
         for (int a = 0; a < 400; a++) {
             vastustajanMaastoaNakyvissa[a / 20][a % 20] = false;
         }
-        kursoriX = 0;
-        kursoriY = 0;
-        pelaajaOhittaaVuoroja = 0;
-        vastustajaOhittaaVuoroja = 0;
-    }
-
-    /**
-     * EI KÄYTÖSSÄ.
-     * @param msecs tauko millisekunteina.
-     */
-    public void tauko(int msecs) {
-        try {
-            Thread.sleep(msecs);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }        
     }
 
     public PeliMuuttujat getMoodi() {
@@ -113,22 +96,31 @@ public class Peli {
     public void setKursoriY(int ky) {
         this.kursoriY = ky;
     }
+
+    public int getOmaviesti() {
+        return omaviesti;
+    }
+
+    public int getVastustajanviesti() {
+        return vastustajanviesti;
+    }
     
     /**
      * Pelataan pelaajan oma vuoro.
      * @return tosi, jos vuoro onnistui (eli kohtaan ei ole ammuttu aikaisemmin).
      */
     public boolean pelaaOmaVuoro() {
+        omaviesti = 0;
         if (vastustajanMaastoaNakyvissa[kursoriY][kursoriX]) {
             // TULOSTA INFORMAATIO "Olet jo ampunut tänne" tms.
             return false;
         }
-
         if (vastustajanMaasto[kursoriY][kursoriX] == 2) { // on laiva!
             vastustajanPiirrettava[kursoriY][kursoriX] += 10;
             josLaivaTuhottuKokonaanPiirraSeLaivaksi(kursoriY, kursoriX);
         } else { // muu kuin laiva!
             if (vastustajanMaasto[kursoriY][kursoriX] == 3) {
+                omaviesti = 7;
                 this.setPelaajaOhittaaVuoroja(3);
             }
             vastustajanPiirrettava[kursoriY][kursoriX] += 100;
@@ -143,8 +135,9 @@ public class Peli {
      */
     public void pelaaVastustajanVuoro() {
         int ampuu = tekoaly.siirto(pelaajanMaasto);
-        //pelaajanMaasto[dy][dx] += 30;
+        vastustajanviesti = tekoaly.getViesti();
         if (pelaajanMaasto[ampuu / 20][ampuu % 20] == 33) { // oli talo
+            vastustajanviesti = 8;
             this.setVastustajaOhittaaVuoroja(3);
         }
         pelaajanPiirrettava[ampuu / 20][ampuu % 20] += 100;
@@ -153,8 +146,10 @@ public class Peli {
     private void josLaivaTuhottuKokonaanPiirraSeLaivaksi(int y, int x) {
         int mikaLaiva = palautaLaivaJohonOsuttiin(y, x); // palauttaa 200 jos ei osuttu, arvo 200 DEBUGGAUSTA varten, voidaan poistaa myöhemmin
         if (mikaLaiva < 200) {
-            if (testaaOnkoLaivaKokonaanTuhottu(mikaLaiva)) {
+            if (testaaOnkoLaivaKokonaanTuhottu(mikaLaiva, vastustajanLaivojenKoordinaatit, vastustajanPiirrettava)) {
                 piirraTuhottuLaivaLaivaksi(mikaLaiva);
+            } else {
+                omaviesti = 1;
             }
         }
     }
@@ -171,10 +166,10 @@ public class Peli {
         return palautus;
     }
     
-    private boolean testaaOnkoLaivaKokonaanTuhottu(int mikaLaiva) {
+    private boolean testaaOnkoLaivaKokonaanTuhottu(int mikaLaiva, Map<Integer, List<Integer>> koordi, int[][] taulu) {
         boolean kaikkiinPaloihinOsuttu = true;
-        for (int a = 0; a < (vastustajanLaivojenKoordinaatit.get(mikaLaiva).size() / 2); a++) {
-            if (vastustajanPiirrettava[vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2)][vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2 + 1)] < 20) {
+        for (int a = 0; a < (koordi.get(mikaLaiva).size() / 2); a++) {
+            if (taulu[koordi.get(mikaLaiva).get(a * 2)][koordi.get(mikaLaiva).get(a * 2 + 1)] < 20) {
                 kaikkiinPaloihinOsuttu = false;
             }
         }
@@ -185,8 +180,37 @@ public class Peli {
         for (int a = 0; a < (vastustajanLaivojenKoordinaatit.get(mikaLaiva).size() / 2); a++) {
             vastustajanPiirrettava[vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2)][vastustajanLaivojenKoordinaatit.get(mikaLaiva).get(a * 2 + 1)] += 90;
         }
+        if (vastustajanLaivojenKoordinaatit.get(mikaLaiva).size() == 2) {
+            omaviesti = 5;
+        } else {
+            omaviesti = 3;
+        }
     }
 
+    public Map<Integer, Integer> vastustajaaTuhottu() {
+        Map<Integer, Integer> palautus = new HashMap<>();
+        for (int hoo: vastustajanLaivojenKoordinaatit.keySet()) {
+            if (testaaOnkoLaivaKokonaanTuhottu(hoo, vastustajanLaivojenKoordinaatit, vastustajanPiirrettava)) {
+                palautus.put(hoo, 1);
+            } else {
+                palautus.put(hoo, 2);
+            }
+        }
+        return palautus;
+    }
+    
+    public Map<Integer, Integer> omaaTuhottu() {
+        Map<Integer, Integer> palautus = new HashMap<>();
+        for (int hoo: omienLaivojenKoordinaatit.keySet()) {
+            if (testaaOnkoLaivaKokonaanTuhottu(hoo, omienLaivojenKoordinaatit, pelaajanPiirrettava)) {
+                palautus.put(hoo, 1);
+            } else {
+                palautus.put(hoo, 2);
+            }
+        }
+        return palautus;
+    }
+    
     public int[][] getVastustajanMaasto() {
         return vastustajanMaasto;
     }
@@ -207,34 +231,10 @@ public class Peli {
         return vastustajanMaastoaNakyvissa;
     }
     
-    private int laskeEhjatLaivapalat(int[][] maasto) {
-        int f = 0;
+    public void setAllVisible() {
         for (int a = 0; a < 400; a++) {
-            if (maasto[a / 20][a % 20] == 2) {
-                f++;
-            }
-        }
-        return f;
-    }
-    
-    /**
-     * Tarkistetaan kierroksen JÄLKEEN, onko jompi kumpi pelaaja voittanut.
-     * @return 0, jos tasapeli, 1, jos vastustaja voitti, 2, jos pelaaja voitti, ja 0, jos ei voittoa.
-     */
-    public int tarkistaVoitto() {
-        int f = laskeEhjatLaivapalat(pelaajanMaasto);
-        int g = laskeEhjatLaivapalat(vastustajanMaasto);
-        
-        if (f == 0 && g == 0) {
-            return 3; // tasapeli
-        }
-        if (f == 0) {
-            return 1; // vastustaja voitti
-        }
-        if (g == 0) {
-            return 2; // pelaaja voitti
-        }
-        return 0; // ei voittoa;
+            vastustajanMaastoaNakyvissa[a / 20][a % 20] = true;
+        }        
     }
     
 }

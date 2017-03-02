@@ -45,8 +45,14 @@ public class NappainTapahtuma {
     }
     
     public void escape(Component component) {
+        boolean tapahtunut = false;
         if (pelirunko.getPeliTilanne() == 1) {
             pelirunko.setPeliTilanne(10);
+            tapahtunut = true;
+        }
+        if (!tapahtunut && pelirunko.getPeliTilanne() >= 20) {
+            pelirunko.setPeliTilanne(0);
+            tapahtunut = true;
         }
     }
     

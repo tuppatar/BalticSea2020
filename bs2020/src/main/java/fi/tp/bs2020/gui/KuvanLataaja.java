@@ -12,11 +12,12 @@ import javax.imageio.ImageIO;
  */
 public class KuvanLataaja {
 
-    private Map<Integer, BufferedImage> kuvat, menukuvat;
+    private Map<Integer, BufferedImage> kuvat, menukuvat, viestikuvat;
 
     public KuvanLataaja() {
         this.kuvat = new HashMap<>();
         this.menukuvat = new HashMap<>();
+        this.viestikuvat = new HashMap<>();
         this.luoMapit();
     }
 
@@ -26,6 +27,10 @@ public class KuvanLataaja {
     
     public Map<Integer, BufferedImage> getMenukuvat() {
         return menukuvat;
+    }
+
+    public Map<Integer, BufferedImage> getViestikuvat() {
+        return viestikuvat;
     }
     
     private void luoMapit() {
@@ -138,7 +143,7 @@ public class KuvanLataaja {
         menukuvat.put(5, this.lataa("kuvat/menu6.png"));
         menukuvat.put(6, this.lataa("kuvat/menu7.png"));
 
-        menukuvat.put(10, this.lataa("kuvat/menu_uusi_off.png"));
+        menukuvat.put(10, this.lataa("kuvat/menu_peli_uusi.png"));
         menukuvat.put(11, this.lataa("kuvat/menu_flag_svefif_off.png"));
         menukuvat.put(12, this.lataa("kuvat/menu_flag_svefif_off.png"));
         menukuvat.put(13, this.lataa("kuvat/menu_vahan_off.png"));
@@ -146,7 +151,7 @@ public class KuvanLataaja {
         menukuvat.put(15, this.lataa("kuvat/menu_paalla_off.png"));
         menukuvat.put(16, this.lataa("kuvat/menu_paalla_off.png"));
 
-        menukuvat.put(20, this.lataa("kuvat/menu_pois_off.png"));
+        menukuvat.put(20, this.lataa("kuvat/menu_pois_pois.png"));
         menukuvat.put(21, this.lataa("kuvat/menu_flag_come_off.png"));
         menukuvat.put(22, this.lataa("kuvat/menu_flag_come_off.png"));
         menukuvat.put(23, this.lataa("kuvat/menu_keski_off.png"));
@@ -162,7 +167,7 @@ public class KuvanLataaja {
         menukuvat.put(41, this.lataa("kuvat/menu_flag_japan_off.png"));
         menukuvat.put(42, this.lataa("kuvat/menu_flag_japan_off.png"));
 
-        menukuvat.put(10 + 100, this.lataa("kuvat/menu_uusi_on.png"));
+        menukuvat.put(10 + 100, this.lataa("kuvat/menu_peli_uusi.png"));
         menukuvat.put(11 + 100, this.lataa("kuvat/menu_flag_svefif_on.png"));
         menukuvat.put(12 + 100, this.lataa("kuvat/menu_flag_svefif_on.png"));
         menukuvat.put(13 + 100, this.lataa("kuvat/menu_vahan_on.png"));
@@ -170,7 +175,7 @@ public class KuvanLataaja {
         menukuvat.put(15 + 100, this.lataa("kuvat/menu_paalla_on.png"));
         menukuvat.put(16 + 100, this.lataa("kuvat/menu_paalla_on.png"));
 
-        menukuvat.put(20 + 100, this.lataa("kuvat/menu_pois_on.png"));
+        menukuvat.put(20 + 100, this.lataa("kuvat/menu_pois_pois.png"));
         menukuvat.put(21 + 100, this.lataa("kuvat/menu_flag_come_on.png"));
         menukuvat.put(22 + 100, this.lataa("kuvat/menu_flag_come_on.png"));
         menukuvat.put(23 + 100, this.lataa("kuvat/menu_keski_on.png"));
@@ -185,6 +190,40 @@ public class KuvanLataaja {
 
         menukuvat.put(41 + 100, this.lataa("kuvat/menu_flag_japan_on.png"));
         menukuvat.put(42 + 100, this.lataa("kuvat/menu_flag_japan_on.png"));
+        
+        menukuvat.put(200, this.lataa("kuvat/menu_maa_0.png"));
+        menukuvat.put(201, this.lataa("kuvat/menu_maa_1.png"));
+        menukuvat.put(202, this.lataa("kuvat/menu_maa_2.png"));
+        menukuvat.put(203, this.lataa("kuvat/menu_maa_3.png"));
+        menukuvat.put(210, this.lataa("kuvat/menu_maa_0.png"));
+        menukuvat.put(211, this.lataa("kuvat/menu_maa_1.png"));
+        menukuvat.put(212, this.lataa("kuvat/menu_maa_2.png"));
+        menukuvat.put(213, this.lataa("kuvat/menu_maa_3.png"));
+        menukuvat.put(220, this.lataa("kuvat/menu_elem_lo.png"));
+        menukuvat.put(221, this.lataa("kuvat/menu_elem_mi.png"));
+        menukuvat.put(222, this.lataa("kuvat/menu_elem_hi.png"));
+        menukuvat.put(230, this.lataa("kuvat/menu_rikko_lo.png"));
+        menukuvat.put(231, this.lataa("kuvat/menu_rikko_mi.png"));
+        menukuvat.put(232, this.lataa("kuvat/menu_rikko_hi.png"));
+
+        menukuvat.put(1000, this.lataa("kuvat/botbs2020.png"));
+        viestikuvat.put(1000, this.lataa("kuvat/viesti_vahvistus.png"));
+        viestikuvat.put(1001, this.lataa("kuvat/yla_pelaaja.png"));
+        viestikuvat.put(1002, this.lataa("kuvat/yla_vastustaja.png"));
+        
+        viestikuvat.put(21, this.lataa("kuvat/viesti_loppu_havio.png"));
+        viestikuvat.put(22, this.lataa("kuvat/viesti_loppu_voitto.png"));
+        viestikuvat.put(23, this.lataa("kuvat/viesti_loppu_tasan.png"));
+        
+        viestikuvat.put(1, this.lataa("kuvat/viesti_laiva_oma.png"));
+        viestikuvat.put(2, this.lataa("kuvat/viesti_laiva_vast.png"));
+        viestikuvat.put(3, this.lataa("kuvat/viesti_upot_oma.png"));
+        viestikuvat.put(4, this.lataa("kuvat/viesti_upot_vast.png"));
+        viestikuvat.put(5, this.lataa("kuvat/viesti_ubota_oma.png"));
+        viestikuvat.put(6, this.lataa("kuvat/viesti_ubota_vast.png"));
+        viestikuvat.put(7, this.lataa("kuvat/viesti_talo_oma.png"));
+        viestikuvat.put(8, this.lataa("kuvat/viesti_talo_vast.png"));
+        viestikuvat.put(10, this.lataa("kuvat/viesti_joampunut.png"));
     }
     
     private BufferedImage lataa(String tiedosto) {

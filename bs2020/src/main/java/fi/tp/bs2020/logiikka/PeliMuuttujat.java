@@ -64,7 +64,7 @@ public class PeliMuuttujat {
         }
         if (elementit == 1) {
             maata = 140;
-            taloja = 6;
+            taloja = 9;
             laivoja.add(6);
             laivoja.add(5);
             laivoja.add(4);
@@ -75,8 +75,8 @@ public class PeliMuuttujat {
             laivoja.add(1);
         }
         if (elementit == 2) {
-            maata = 180;
-            taloja = 10;
+            maata = 200;
+            taloja = 15;
             laivoja.add(6);
             laivoja.add(5);
             laivoja.add(4);
