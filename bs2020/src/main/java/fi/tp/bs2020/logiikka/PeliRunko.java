@@ -1,52 +1,35 @@
 package fi.tp.bs2020.logiikka;
 
 import fi.tp.bs2020.gui.Aanet;
+import fi.tp.bs2020.gui.Soittaja;
 import java.awt.Component;
 import java.util.Random;
 
 /**
- *
- * @author Tuomas Pätäri
+ * Pelin päärunko.
+ * 
  */
 public class PeliRunko {
     
-    private int peliTilanne = 0, omaviesti = 0, vastustajanviesti = 0; // 0 = menu, 1 = peli, 2 = peliloppu, 3 = peliesc
+    private int peliTilanne = 0, omaviesti = 0, vastustajanviesti = 0, soitettava = 0;
     private Peli peli;
     private Aanet aanet;
     private Random arpoja;
     private PeliMuuttujat moodi;
     private Menu menu;
-    private boolean musaOn, aanetOn, taukoTila;
+    private boolean musaOn, aanetOn;
+    private Soittaja soittaja;
     
     public PeliRunko(Random arpoja) {
         peliTilanne = 0;
         this.arpoja = arpoja;
-        this.aanet = new Aanet();
         this.moodi = new PeliMuuttujat();
-        this.menu = this.uusiMenu();
+        this.soittaja = new Soittaja(arpoja, moodi);
+        this.menu = new Menu(moodi, soittaja);
         this.musaOn = false;
         this.aanetOn = false;
-        this.taukoTila = false;
-    }
-    
-    /**
-     * EI KÄYTÖSSÄ.
-     * @param msecs tauko millisekunteina.
-     */
-    public void tauko(int msecs) {
-        this.taukoTila = true;
-        try {
-            Thread.sleep(msecs);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-        this.taukoTila = false;
     }
 
-    public boolean isTaukoTila() {
-        return taukoTila;
-    }
-    
     public Peli getPeli() {
         return peli;
     }
@@ -59,27 +42,17 @@ public class PeliRunko {
         this.peliTilanne = peliTilanne;
     }
     
-    public void aloitus() {
-        
-    }
-
     public PeliMuuttujat getMoodi() {
         return moodi;
     }
     
-    public Menu uusiMenu() {
-        Menu menuZ = new Menu();
-        menuZ.setMoodi(moodi);
-        return menuZ;
-    }
-
     public Menu getMenu() {
         return menu;
     }
     
     public Peli uusiPeli() {
         moodi.asetaMuuttujatPeliaVarten();
-        peli = new Peli(arpoja, aanet, moodi);
+        peli = new Peli(arpoja, soittaja, moodi);
         return peli;
     }
 
@@ -91,47 +64,36 @@ public class PeliRunko {
         return vastustajanviesti;
     }
 
-    public void peliSiirto(Component component) {
-        //omaviesti = 0;
-        //vastustajanviesti = 0;
-        boolean vastustajanVuoroPelataan = true;
+    private boolean pelaajanSiirto() {
         if (peli.getPelaajaOhittaaVuoroja() == 0) {
             if (!peli.pelaaOmaVuoro()) {
                 omaviesti = 10;
-                vastustajanVuoroPelataan = false;
+                return false;
             } else {
                 omaviesti = peli.getOmaviesti();
+                return true;
             }
         } else {
             peli.setPelaajaOhittaaVuoroja(peli.getPelaajaOhittaaVuoroja() - 1);
+            return true;
         }
+    }
+    
+    private void vastustajanSiirto(boolean vastustajanVuoroPelataan) {
         if (vastustajanVuoroPelataan && peli.getVastustajaOhittaaVuoroja() == 0) {
             peli.pelaaVastustajanVuoro();
             vastustajanviesti = peli.getVastustajanviesti();
         } else if (vastustajanVuoroPelataan) {
             peli.setVastustajaOhittaaVuoroja(peli.getVastustajaOhittaaVuoroja() - 1);
         }
-//        if (peli.pelaaOmaVuoro()) {
-//            component.repaint();
-//            if (peli.getVastustajaOhittaaVuoroja() == 0) {
-//                peli.pelaaVastustajanVuoro();
-//            } else {
-//                peli.setVastustajaOhittaaVuoroja(peli.getVastustajaOhittaaVuoroja() - 1);
-//            }
-//        } else {
-//            omaviesti = 10;
-//        }
-//        while (peli.getPelaajaOhittaaVuoroja() > 0) {
-//            if (peli.getVastustajaOhittaaVuoroja() == 0) {
-//                peli.pelaaVastustajanVuoro();
-////                this.tauko(500);
-////                component.repaint();
-//            } else {
-//                peli.setVastustajaOhittaaVuoroja(peli.getVastustajaOhittaaVuoroja() - 1);
-//            }
-//            peli.setPelaajaOhittaaVuoroja(peli.getPelaajaOhittaaVuoroja() - 1);
-//        }
-        component.repaint();
+    }
+    
+    public void peliSiirto() {
+        boolean vastustajanVuoroPelataan = true;
+        if (!pelaajanSiirto()) {
+            vastustajanVuoroPelataan = false;
+        }
+        vastustajanSiirto(vastustajanVuoroPelataan);
         int kumpi = this.tarkistaVoitto(); // 1 = vastustaja voitti; 2 = pelaaja voitti; 3 = tasapeli
         if (kumpi > 0) {
             peli.setAllVisible();
@@ -157,15 +119,22 @@ public class PeliRunko {
         int f = laskeEhjatLaivapalat(peli.getPelaajanMaasto());
         int g = laskeEhjatLaivapalat(peli.getVastustajanMaasto());
         if (f == 0 && g == 0) {
+            soittaja.soitaLoppu(0);
             return 3; // tasapeli
         }
         if (f == 0) {
+            soittaja.soitaLoppu(1);
             return 1; // vastustaja voitti
         }
         if (g == 0) {
+            soittaja.soitaLoppu(0);
             return 2; // pelaaja voitti
         }
         return 0; // ei voittoa;
+    }
+
+    public Soittaja getSoittaja() {
+        return soittaja;
     }
     
 }

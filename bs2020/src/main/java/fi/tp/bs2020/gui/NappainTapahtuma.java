@@ -35,11 +35,14 @@ public class NappainTapahtuma {
                 tapahtunut = true;
                 pelirunko.setPeliTilanne(1);
             } else if (tapahtuma == 2) {
+                pelirunko.getSoittaja().lopetaMusiikki();
+                pelirunko.getSoittaja().lopetaAanet();
+                pelirunko.getSoittaja().tauko(100);
                 frame.dispose();
             }
         }
         if (!tapahtunut && pelirunko.getPeliTilanne() == 1) {
-            pelirunko.peliSiirto(component);
+            pelirunko.peliSiirto();
             tapahtunut = true;
         }
     }

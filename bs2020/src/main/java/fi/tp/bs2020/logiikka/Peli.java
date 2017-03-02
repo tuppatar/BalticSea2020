@@ -1,6 +1,7 @@
 package fi.tp.bs2020.logiikka;
 
 import fi.tp.bs2020.gui.Aanet;
+import fi.tp.bs2020.gui.Soittaja;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,18 +18,18 @@ public class Peli {
     private int[][] vastustajanMaastonSatunnaisuus;
     private boolean[][] vastustajanMaastoaNakyvissa;
     private MaastonLuoja ml;
-    private int kursoriX = 0, kursoriY = 0, pelaajaOhittaaVuoroja = 0, vastustajaOhittaaVuoroja = 0, omaviesti = 0, vastustajanviesti = 0;
+    private int kursoriX = 0, kursoriY = 0, pelaajaOhittaaVuoroja = 0, vastustajaOhittaaVuoroja = 0, omaviesti = 0, vastustajanviesti = 0, soitettava = 0;
     private Map<Integer, List<Integer>> vastustajanLaivojenKoordinaatit, omienLaivojenKoordinaatit;
     private TekoAly tekoaly;
-    private Aanet aanet;
     private PeliMuuttujat moodi;
+    private Soittaja soittaja;
     
     /**
      * Konstruktori.
      * @param arpoja    Random-olio.
      * @param aanet     Ääni-olio.
      */
-    public Peli(Random arpoja, Aanet aanet, PeliMuuttujat moodi) {
+    public Peli(Random arpoja, Soittaja soittaja, PeliMuuttujat moodi) {
         vastustajanMaasto = new int[20][20];
         vastustajanPiirrettava = new int[20][20];
         pelaajanMaasto = new int[20][20];
@@ -36,9 +37,8 @@ public class Peli {
         vastustajanMaastoaNakyvissa = new boolean[20][20];
         this.moodi = moodi;
         this.arpoja = arpoja;
-        this.aanet = aanet;
+        this.soittaja = soittaja;
         tekoaly = new TekoAly(arpoja);
-        tekoaly.setAanet(aanet);
         
         ml = new MaastonLuoja(arpoja);
         vastustajanMaasto = ml.luoVastustajanMaasto(moodi);
@@ -112,9 +112,9 @@ public class Peli {
     public boolean pelaaOmaVuoro() {
         omaviesti = 0;
         if (vastustajanMaastoaNakyvissa[kursoriY][kursoriX]) {
-            // TULOSTA INFORMAATIO "Olet jo ampunut tänne" tms.
             return false;
         }
+        int soittoon = vastustajanMaasto[kursoriY][kursoriX];
         if (vastustajanMaasto[kursoriY][kursoriX] == 2) { // on laiva!
             vastustajanPiirrettava[kursoriY][kursoriX] += 10;
             josLaivaTuhottuKokonaanPiirraSeLaivaksi(kursoriY, kursoriX);
@@ -125,6 +125,7 @@ public class Peli {
             }
             vastustajanPiirrettava[kursoriY][kursoriX] += 100;
         }
+        soittaja.soitaPelaaja(omaviesti, soittoon);
         vastustajanMaasto[kursoriY][kursoriX] += 30;
         vastustajanMaastoaNakyvissa[kursoriY][kursoriX] = true;
         return true;
@@ -135,11 +136,13 @@ public class Peli {
      */
     public void pelaaVastustajanVuoro() {
         int ampuu = tekoaly.siirto(pelaajanMaasto);
+        int soittoon = tekoaly.getVanhaArvo();
         vastustajanviesti = tekoaly.getViesti();
         if (pelaajanMaasto[ampuu / 20][ampuu % 20] == 33) { // oli talo
             vastustajanviesti = 8;
             this.setVastustajaOhittaaVuoroja(3);
         }
+        soittaja.soitaVastustaja(vastustajanviesti, soittoon);
         pelaajanPiirrettava[ampuu / 20][ampuu % 20] += 100;
     }
     

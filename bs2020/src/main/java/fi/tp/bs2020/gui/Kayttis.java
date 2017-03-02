@@ -18,8 +18,6 @@ public class Kayttis implements Runnable {
     private NappainTapahtuma nt;
     private PeliRunko pelirunko;
     
-    private Aanet aanet;
-    
     public Kayttis() {
 //        kuk = new KuvanKasittelija();
 //        kuvat = kuk.lataaKuvat();
@@ -38,12 +36,6 @@ public class Kayttis implements Runnable {
         nt.setFrame(frame);
         luoKomponentit(frame.getContentPane());
         lisaaKuuntelijat();
-
-        //new Thread(aanet).start();
-        //aanet.start();
-        //aanet.play("erased.wav");
-        //aanet.soitaMenumusiikki(); //AANET
-        //aanet.play("Musa.mp3");
         
         frame.pack();
         frame.setVisible(true);

@@ -15,8 +15,7 @@ public class TekoAly {
     private boolean kohdeKesken; // DEBUG
     private Map<Integer, List<Integer>> laivanKoordinaatit;
     private Map<Integer, Integer> laivaTuhottu;
-    private Aanet aanet;
-    private int viesti;
+    private int viesti, vanhaArvo;
     
     /**
      * Konstruktori.
@@ -25,10 +24,11 @@ public class TekoAly {
     public TekoAly(Random arpoja) {
         this.arpoja = arpoja;
         this.viesti = 0;
+        this.vanhaArvo = 0;
     }
 
-    public void setAanet(Aanet aanet) {
-        this.aanet = aanet;
+    public int getVanhaArvo() {
+        return vanhaArvo;
     }
 
     public int getViesti() {
@@ -112,14 +112,13 @@ public class TekoAly {
     private int pommitetaanLaivaa(int[][] maasto) {
         int mikaLaivaKesken = mikaKesken();
         int yksiKohtaMihinOsuttu = mihinOsuttu(mikaLaivaKesken, maasto);
-
         TekoAlyLaivalle tal = new TekoAlyLaivalle(maasto, (yksiKohtaMihinOsuttu / 20), (yksiKohtaMihinOsuttu % 20), arpoja);
         int pal = tal.ammutaanLaivaa();
-
         if (maasto[pal / 20][pal % 20] == 2) {
             viesti = 2;
         }
-        maasto[pal / 20][pal % 20] += 30; // huono tapa
+        this.vanhaArvo = maasto[pal / 20][pal % 20];
+        maasto[pal / 20][pal % 20] += 30;
         this.paivitaTuhottu(mikaLaivaKesken, maasto);
         return pal;
     }
@@ -127,9 +126,9 @@ public class TekoAly {
     private int pommitetaanMuualle(int[][] maasto) {
         TekoAlyMuualle tam = new TekoAlyMuualle(maasto, arpoja);
         int pal = tam.ammutaanMuualle();
-        
         paivitaOsuttu(pal / 20, pal % 20, maasto);
-        maasto[pal / 20][pal % 20] += 30; // huono tapa                
+        this.vanhaArvo = maasto[pal / 20][pal % 20];
+        maasto[pal / 20][pal % 20] += 30;
         return pal;
     }
     
@@ -142,16 +141,12 @@ public class TekoAly {
     public int siirto(int[][] maasto) {
         int paluuarvo = 0;
         viesti = 0;
-        aanet.setSoita(1);
-        //new Thread(aanet).start(); /// TEST
-
         boolean laivaKesken = onkoKesken();
         if (laivaKesken) {
             paluuarvo = pommitetaanLaivaa(maasto);
         } else {
             paluuarvo = pommitetaanMuualle(maasto);
         }
-        
         return paluuarvo;
     }
     
