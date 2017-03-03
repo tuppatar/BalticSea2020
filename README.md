@@ -2,18 +2,9 @@
 
 Peli on laajennettu versio perinteisestä laivanupotuksesta. Pelissä on laivojen lisäksi saaria ja niillä siiviliasumuksia, joihin vastustaja EI saa osua.
 
-Uutta viikolla 6:
-Tällä viikolla oli muiden kurssien kanssa niin kiireistä, että edistyminen oli hieman vähäisempää.
-
-Löysin yhden laivansijoittelubugin ja korjasin sen. Bugi oli sellainen että sitä olisi vaikea keksiä testeillä.Kävin koodin tarkasti läpi rivi riviltä, jotta vastaavia ei löytyisi lisää.
-
-Lisäsin myös PeliMoodi-luokan, jossa on arvoina pelin muuttujia: Maapalojen, talojen ja erilaisten laivojen lukumäärät sekä saariston "rikkonaisuuteen" vaikuttava arvo. On tarkoitus, että nämä pääsee muuttamaan pelin menusta. Muutin myös testit sellaisiksi, että niitä ei tarvitse muuttaa arvojen muuttuessa. Lisäksi pelissä itsessään testataan nyt myös, että laivat ja talot voi yleensäkin sijoittua sääntöjen mukaan maastoon (teoreettinen mahdollisuus ettei näin olisi). Jos näin ei ole, koko maasto luodaan uusiksi.
-
-Pelilogiikka alkaa mielestäni olla täysin valmis. Viimeiselle viikolle jää pelin menun rakentelu, jossa voi muuttaa parametrejä sekä käynnistää uuden pelin. Samoin peliin olisi tarkoitus tulla pelitilanteen informaatiota esitettäväksi pelin aikana. Peli myös palautuu menuun pelin päättyessä. Pelin päättymisen tarkistus on jo valmis mutta ei käytössä.
-
-Jar-tiedoston luonti ja kuvien lataaminen resources-kansiosta ilman File-luokkaa onnistui.
-
 Dokumentaatio:
+
+[Javadoc](https://htmlpreview.github.io/?https://github.com/tuppatar/BalticSea2020/blob/master/javadoc/index.html)
 
 [aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 
