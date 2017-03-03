@@ -16,5 +16,9 @@ Päivä | Tunnit | Kuvaus
 15.2.2017 | 4.5h | Edellinen korjattu siten, että tekoälyyn ei puututtu vaan pelaajan näkemä vastustajan maasto tarkentuu vähitellen. Tämän lisäksi koodin siistimistä ja grafiikan uudelleenpiirtelyä paremmaksi ja selkeämmäksi.
 16.2.2017 | 2.5h | Testien,raporttien ja dokumenttien päivitystä.
 21.2.2017 | 2.0h | Odottamattoman bugin huomaamisen johdosta muiden bugien etsintää ja testausta "manuaalisesti".
-23.2.2017 | 5.0h | PeliMoodi-luokan luonti. Nyt parametrien arvojen (saaria, taloja, laivoja, saariston rikkonaisuuden aste) muuttaminen on helppoa ja nämä voi lisätä pelin menuun. Lisäksi testien päivitys niin, että testeillekin käy kaikki arvot. Jarin luonti.
-... | ... | ...
+23.2.2017 | 5.0h | PeliMoodi-luokan luonti. Nyt parametrien arvojen (saaria, taloja, laivoja, saariston rikkonaisuuden aste) muuttaminen on helppoa ja nämä voi lisätä pelin menuun. Lisäksi testien päivitys niin, että testeillekin käy kaikki arvot.
+28.2.2017 | 3.0h | Valikon teon aloittaminen. Pelin ruutunäkymän komponenttien luonti.
+1.3.2017 | 4.5h | Valikon ja pelin ruutunäkymän komponenttien jatkoa ja niihin liittyvien grafiikkojen tekoa.
+2.3.2017 | 12.0h | Valikon viimeistely ja Soittaja-luokan teko. Äänien muokkausta ja niiden soiton lisääminen koodiin.
+3.3.2017 | 8.5h | Musiikin teko (vanhan biisin pohjalta). Viimeiseen palautukseen tarvittavat loppuviimeistelyt.
+x.x.xxxx | x.xh | Kaikkea pelin grafiikkaan ja ääniin tarvittavaa työtä en ole jaksanut pistää ylös tuntikirjanpitoon.
