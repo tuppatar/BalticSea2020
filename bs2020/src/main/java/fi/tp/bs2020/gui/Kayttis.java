@@ -25,7 +25,7 @@ public class Kayttis implements Runnable {
     
     @Override
     public void run() {
-        frame = new JFrame("Palusta");
+        frame = new JFrame("Battle of the Baltic Sea 2020");
         frame.setPreferredSize(new Dimension(1220, 700));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

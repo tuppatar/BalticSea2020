@@ -125,6 +125,7 @@ public class Aanet implements Runnable {
 
         soittolista.put(100, "aanet/menu_klik.wav");
         soittolista.put(101, "aanet/menu_select.wav");
+        soittolista.put(102, "aanet/menu_eivoi.wav");
 
         soittolista.put(200, "aanet/end.wav");
         soittolista.put(201, "aanet/end_havio.wav");

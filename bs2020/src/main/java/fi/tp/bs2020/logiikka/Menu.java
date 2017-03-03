@@ -75,6 +75,10 @@ public class Menu {
         if (moodi.getPelaaja() != x && moodi.getVastustaja() != x) {
             moodi.setPelaaja(x);
             soittaja.soitaAani(101);
+        } else if (moodi.getPelaaja() == x) {
+            soittaja.soitaAani(101);
+        } else {
+            soittaja.soitaAani(102);
         }
     }
 
@@ -82,6 +86,10 @@ public class Menu {
         if (moodi.getPelaaja() != x && moodi.getVastustaja() != x) {
             moodi.setVastustaja(x);
             soittaja.soitaAani(101);
+        } else if (moodi.getVastustaja() == x) {
+            soittaja.soitaAani(101);
+        } else {
+            soittaja.soitaAani(102);
         }
     }
     
