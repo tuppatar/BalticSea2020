@@ -17,17 +17,12 @@ import javax.swing.JPanel;
 public class Grafiikka extends JPanel {
     
     private Color sumentavaVari;
-    //private Peli peli;
     private KuvanLataaja kl;
     private Map<Integer, BufferedImage> kuvat, menukuvat, viestikuvat;
     private PiirrettavanMuokkaaja piirtaja;
     private PeliRunko pelirunko;
     private final int offSet = 500;
     
-    /**
-     * Konstruktori.
-     * @param pel Peli, joka on meneillään.
-     */
     public Grafiikka(PeliRunko pelirunko) {
         super.setBackground(Color.BLACK);
         this.pelirunko = pelirunko;
@@ -178,41 +173,34 @@ public class Grafiikka extends JPanel {
         if (vastustajan > 0) {
             graphics.drawImage(viestikuvat.get(vastustajan), 180, 445, this); //
         }  
-
     }
     
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-
         if (pelirunko.getPeliTilanne() == 0) {
             piirraMenuElementit(graphics, pelirunko.getMoodi());
             piirraMenuKursori(graphics, pelirunko.getMenu());
             piirraMenuViestit(graphics, pelirunko.getMenu(), pelirunko.getMoodi());
         }
-        
         if (pelirunko.getPeliTilanne() == 1) {
             piirraOma(graphics, pelirunko.getPeli());
             piirraVastustaja(graphics, pelirunko.getPeli(), 1);
             piirraKursori(graphics, pelirunko.getPeli());
             piirraPeliElementit(graphics, pelirunko.getMoodi(), pelirunko.getPeli());
-            piirraPeliViestit(graphics, pelirunko.getomaViesti(), pelirunko.getVastustajanviesti());
+            piirraPeliViestit(graphics, pelirunko.getOmaViesti(), pelirunko.getVastustajanviesti());
         }
-
         if (pelirunko.getPeliTilanne() == 10) { // escape
             piirraOma(graphics, pelirunko.getPeli());
             piirraVastustaja(graphics, pelirunko.getPeli(), 1);
             piirraPeliElementit(graphics, pelirunko.getMoodi(), pelirunko.getPeli());
             graphics.drawImage(viestikuvat.get(1000), 180, 445, this);
         }
-        
         if (pelirunko.getPeliTilanne() >= 20) { // voitot
             piirraOma(graphics, pelirunko.getPeli());
             piirraVastustaja(graphics, pelirunko.getPeli(), pelirunko.getPeliTilanne());
             piirraPeliElementit(graphics, pelirunko.getMoodi(), pelirunko.getPeli());
             graphics.drawImage(viestikuvat.get(pelirunko.getPeliTilanne()), 180, 445, this);
         }
-        
-        //graphics.setColor(vari);
     }
 }

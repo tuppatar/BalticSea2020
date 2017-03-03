@@ -18,7 +18,8 @@ public class NappaimistonKuuntelija implements KeyListener {
     /**
      * Näppäimistön painalluksiin reagoiva luokka. Sisältää toistaiseksi toiminnallisuutta joka on tarkoitus siirtää muualle.
      * @param component Komponentti
-     * @param peli Käynnissä oleva Peli.
+     * @param pelirunko Pelin runkoluokka.
+     * @param nt        Näppäintapahtuma, johon kuuntelijan painallukset siirtyvät.
      */
     public NappaimistonKuuntelija(Component component, PeliRunko pelirunko, NappainTapahtuma nt) {
         this.component = component;
@@ -45,13 +46,13 @@ public class NappaimistonKuuntelija implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             nt.peliAlas();
         } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            nt.enter(component);
+            nt.enter();
         } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            nt.escape(component);
+            nt.escape();
         } else if (e.getKeyCode() == KeyEvent.VK_E) {
-            nt.nappainE(component);
+            nt.nappainE();
         } else if (e.getKeyCode() == KeyEvent.VK_K) {
-            nt.nappainK(component);
+            nt.nappainK();
         }
         component.repaint();
     }

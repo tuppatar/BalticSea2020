@@ -16,8 +16,6 @@ public class PeliMuuttujat {
     
     /**
      * Konstruktori. Sen käyttämä asetaMuuttujat asettaa maastonluomisen muuttujat.
-     * @param moodi on pelimoodi.
-     * @param hajanaisuus = saariston hajanaisuus.
      */
     public PeliMuuttujat() {
         this.pelaaja = 0; //svefif
@@ -45,6 +43,11 @@ public class PeliMuuttujat {
         this.vastustaja = vastustaja;
     }
     
+    /**
+     * Asettaa valikosta saadut "elementtien määrä" ja "saariston rikkonaisuus" -arvot (0-2) todellisiksi
+     * pelissä tarvittaviksi arvoiksi. Elementtien määrä muutetaan taloiksi, maapaloiksi ja laivoiksi. Rikkonaisuus
+     * muutetaan Random-olion tarvitsemaksi arvoksi (10, 40 tai 70) jota MaastonLuoja käyttää.
+     */
     public void asetaMuuttujatPeliaVarten() {
         this.asetaMuuttujat();
         this.asetaHajanaisuus();

@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fi.tp.bs2020.logiikka;
 
 import fi.tp.bs2020.gui.Aanet;
+import fi.tp.bs2020.gui.Soittaja;
+import java.util.Map;
 import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -14,13 +11,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Hate Halon
- */
+
 public class PeliTest {
     
     Peli peli;
+    PeliRunko pr;
     
     public PeliTest() {
     }
@@ -36,14 +31,23 @@ public class PeliTest {
     @Before
     public void setUp() {
         Random arpoja = new Random();
-        Aanet aanet = new Aanet();
-        peli = new Peli(arpoja, aanet);
+        pr = new PeliRunko(arpoja);
+        Soittaja soittaja = pr.getSoittaja();
+        PeliMuuttujat moodi = pr.getMoodi();
+        moodi.setElementit(arpoja.nextInt(2));
+        moodi.setHajanaisuus(arpoja.nextInt(2));
+        peli = pr.uusiPeli();
     }
     
     @After
     public void tearDown() {
     }
 
+    @Test
+    public void peliRunkoPalauttaaOikeanPelin() {
+        assertEquals(peli, pr.getPeli());
+    }
+    
     @Test
     public void pelaa3OmaaVuoroaJaLaskeOsumiaVastustajalla3() {
         peli.pelaaOmaVuoro();
@@ -138,16 +142,18 @@ public class PeliTest {
     
     @Test
     public void tarkistaVoittoPalauttaaNollan() {
-        assertEquals(0, peli.tarkistaVoitto());
+        assertEquals(0, pr.tarkistaVoitto());
     }
 
+    @Test
     public void tarkistaVoittoPalauttaaHavion() {
         for (int c = 0; c < 400; c++) {
             peli.pelaaVastustajanVuoro();
         }
-        assertEquals(1, peli.tarkistaVoitto());
+        assertEquals(1, pr.tarkistaVoitto());
     }
     
+    @Test
     public void tarkistaVoittoPalauttaaVoiton() {
         int a = 0;
         while (a < 400) {
@@ -157,9 +163,10 @@ public class PeliTest {
                 a++;
             }
         }
-        assertEquals(2, peli.tarkistaVoitto());
+        assertEquals(2, pr.tarkistaVoitto());
     }
     
+    @Test
     public void tarkistaVoittoPalauttaaTasapelin() {
         for (int c = 0; c < 400; c++) {
             peli.pelaaVastustajanVuoro();
@@ -172,7 +179,54 @@ public class PeliTest {
                 a++;
             }
         }
-        assertEquals(3, peli.tarkistaVoitto());
+        assertEquals(3, pr.tarkistaVoitto());
+    }
+    
+    @Test
+    public void kaikkiMuuttuuNakyvaksi() {
+        boolean[][] vertaus;
+        vertaus = new boolean[20][20];
+        for (int a = 0; a < 400; a++) {
+            vertaus[a / 20][a % 20] = false;
+        }
+        assertArrayEquals(vertaus, peli.getVisible());
+        for (int a = 0; a < 400; a++) {
+            vertaus[a / 20][a % 20] = true;
+        }
+        peli.setAllVisible();
+        assertArrayEquals(vertaus, peli.getVisible());
+    }
+    
+    @Test
+    public void kursoritPalautuvat() {
+        assertEquals(0, peli.getKursoriX());
+        assertEquals(0, peli.getKursoriY());
+        peli.setKursoriX(2);
+        peli.setKursoriY(2);
+        assertEquals(2, peli.getKursoriX());
+        assertEquals(2, peli.getKursoriY());
+    }
+    
+    @Test
+    public void tarkistaTuhoListat() {
+        Map Oma = peli.omaaTuhottu();
+        Map Vast = peli.vastustajaaTuhottu();
+        for (int a = 0; a < Oma.size(); a++) {
+            assertEquals(2, Oma.get(a));
+            assertEquals(2, Vast.get(a));
+        }
+        for (int c = 0; c < 400; c++) {
+            peli.pelaaVastustajanVuoro();
+            peli.setKursoriX(c % 20);
+            peli.setKursoriY(c / 20);
+            peli.pelaaOmaVuoro();
+        }
+        Oma = peli.omaaTuhottu();
+        Vast = peli.vastustajaaTuhottu();
+        for (int a = 0; a < Oma.size(); a++) {
+            assertEquals(1, Oma.get(a));
+            assertEquals(1, Vast.get(a));
+        }
     }
     
     // TODO add test methods here.

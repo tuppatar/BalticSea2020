@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 15,
+      <title>File: 19,
              Errors: 2,
              Warnings: 0,
              Infos: 0
@@ -60,20 +60,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.TekoAlyMuualle.java">fi/tp/bs2020/logiikka/TekoAlyMuualle.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.Peli.java">fi/tp/bs2020/logiikka/Peli.java</a>
                 </td>
                 <td>
@@ -84,6 +70,20 @@ under the License.
                 </td>
                 <td>
                   1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.luojat.PiirtotaulukonLuoja.java">fi/tp/bs2020/luojat/PiirtotaulukonLuoja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.PeliMoodi.java">fi/tp/bs2020/logiikka/PeliMoodi.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.luojat.LaivanLuoja.java">fi/tp/bs2020/luojat/LaivanLuoja.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.LaivanLuoja.java">fi/tp/bs2020/logiikka/LaivanLuoja.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.gui.Soittaja.java">fi/tp/bs2020/gui/Soittaja.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.PiirtotaulukonLuoja.java">fi/tp/bs2020/logiikka/PiirtotaulukonLuoja.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.tekoaly.TekoAlyMuualle.java">fi/tp/bs2020/tekoaly/TekoAlyMuualle.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.luojat.MaastonLuoja.java">fi/tp/bs2020/luojat/MaastonLuoja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.gui.NappainTapahtuma.java">fi/tp/bs2020/gui/NappainTapahtuma.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +214,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.MaastonLuoja.java">fi/tp/bs2020/logiikka/MaastonLuoja.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.PeliRunko.java">fi/tp/bs2020/logiikka/PeliRunko.java</a>
                 </td>
                 <td>
                   0
@@ -196,6 +224,20 @@ under the License.
                 </td>
                 <td>
                   0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.tekoaly.TekoAlyLaivalle.java">fi/tp/bs2020/tekoaly/TekoAlyLaivalle.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -214,7 +256,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.TekoAlyLaivalle.java">fi/tp/bs2020/logiikka/TekoAlyLaivalle.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.PeliMuuttujat.java">fi/tp/bs2020/logiikka/PeliMuuttujat.java</a>
                 </td>
                 <td>
                   0
@@ -223,7 +265,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
                 </td>
               </tr>
                           <tr>
@@ -242,7 +284,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.TekoAly.java">fi/tp/bs2020/logiikka/TekoAly.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.logiikka.Menu.java">fi/tp/bs2020/logiikka/Menu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.tp.bs2020.tekoaly.TekoAly.java">fi/tp/bs2020/tekoaly/TekoAly.java</a>
                 </td>
                 <td>
                   0

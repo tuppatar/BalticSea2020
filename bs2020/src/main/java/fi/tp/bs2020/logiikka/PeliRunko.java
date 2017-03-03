@@ -20,6 +20,10 @@ public class PeliRunko {
     private boolean musaOn, aanetOn;
     private Soittaja soittaja;
     
+    /**
+     * Konstruktori. alustetaan muuttujat. PeliRunko käynnistetään koodissa vain kerran.
+     * @param arpoja Random-olio.
+     */
     public PeliRunko(Random arpoja) {
         peliTilanne = 0;
         this.arpoja = arpoja;
@@ -50,13 +54,17 @@ public class PeliRunko {
         return menu;
     }
     
+    /**
+     * Aloitetaan uusi Peli. Tapahtuu, kun valikossa on niin valittu.
+     * @return aloitettu Peli.
+     */
     public Peli uusiPeli() {
         moodi.asetaMuuttujatPeliaVarten();
         peli = new Peli(arpoja, soittaja, moodi);
         return peli;
     }
 
-    public int getomaViesti() {
+    public int getOmaViesti() {
         return omaviesti;
     }
 
@@ -88,6 +96,9 @@ public class PeliRunko {
         }
     }
     
+    /**
+     * Yksi pelin kokonaissiirto. Ensin suoritetaan pelaajan vuoro ja sitten vastustajan. Vuoro jää 3 kertaa väliin, jos siviilejä on ammuttu.
+     */
     public void peliSiirto() {
         boolean vastustajanVuoroPelataan = true;
         if (!pelaajanSiirto()) {

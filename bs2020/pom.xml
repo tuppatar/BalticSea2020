@@ -54,9 +54,13 @@
             <configuration>
                 <targetClasses>
                     <param>fi.tp.bs2020.logiikka.*</param>
+                    <param>fi.tp.bs2020.luojat.*</param>
+                    <param>fi.tp.bs2020.tekoaly.*</param>
                 </targetClasses>
                 <targetTests>
                     <param>fi.tp.bs2020.logiikka.*</param>
+                    <param>fi.tp.bs2020.luojat.*</param>
+                    <param>fi.tp.bs2020.tekoaly.*</param>
                 </targetTests>
             </configuration>                
             </plugin>

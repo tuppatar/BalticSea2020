@@ -1,5 +1,7 @@
 package fi.tp.bs2020.logiikka;
 
+import fi.tp.bs2020.luojat.MaastonLuoja;
+import fi.tp.bs2020.tekoaly.TekoAly;
 import fi.tp.bs2020.gui.Aanet;
 import fi.tp.bs2020.gui.Soittaja;
 import java.util.HashMap;
@@ -8,8 +10,7 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Peliluokka vastaa pelin kokonaisuuden toiminnallisuudesta. Tämän tulen varmaan vielä jakamaan kahteen erilaisesta
- * toiminnallisuudesta vastaamaan osaan.
+ * Peliluokka vastaa pelin siirtojen toiminnallisuudesta.
  */
 public class Peli {
     
@@ -27,7 +28,8 @@ public class Peli {
     /**
      * Konstruktori.
      * @param arpoja    Random-olio.
-     * @param aanet     Ääni-olio.
+     * @param soittaja  Soittaja, joka soittaa äänet.
+     * @param moodi     Pelin muuttujat.
      */
     public Peli(Random arpoja, Soittaja soittaja, PeliMuuttujat moodi) {
         vastustajanMaasto = new int[20][20];
@@ -190,6 +192,10 @@ public class Peli {
         }
     }
 
+    /**
+     * Palauttaa laivoista "onko tuhottu kokonaan"-mapin. Käytetään apuna piirrettäessä pelinkentän ulkopuolella olevat laivat.
+     * @return Map, jossa avaimena laiva ja arvona 1, jos on tuhottu kokonaan ja 2, jos ei ole.
+     */
     public Map<Integer, Integer> vastustajaaTuhottu() {
         Map<Integer, Integer> palautus = new HashMap<>();
         for (int hoo: vastustajanLaivojenKoordinaatit.keySet()) {
@@ -202,6 +208,10 @@ public class Peli {
         return palautus;
     }
     
+    /**
+     * Palauttaa laivoista "onko tuhottu kokonaan"-mapin. Käytetään apuna piirrettäessä pelinkentän ulkopuolella olevat laivat.
+     * @return Map, jossa avaimena laiva ja arvona 1, jos on tuhottu kokonaan ja 2, jos ei ole.
+     */
     public Map<Integer, Integer> omaaTuhottu() {
         Map<Integer, Integer> palautus = new HashMap<>();
         for (int hoo: omienLaivojenKoordinaatit.keySet()) {
@@ -234,6 +244,9 @@ public class Peli {
         return vastustajanMaastoaNakyvissa;
     }
     
+    /**
+     * Asettaa koko maaston näkyväksi. Tarvitaan kun pelissä jompikumpi voittaa.
+     */
     public void setAllVisible() {
         for (int a = 0; a < 400; a++) {
             vastustajanMaastoaNakyvissa[a / 20][a % 20] = true;

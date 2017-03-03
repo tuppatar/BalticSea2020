@@ -3,12 +3,10 @@ package fi.tp.bs2020.gui;
 import fi.tp.bs2020.logiikka.Menu;
 import fi.tp.bs2020.logiikka.Peli;
 import fi.tp.bs2020.logiikka.PeliRunko;
-import java.awt.Component;
 import javax.swing.JFrame;
 
 /**
- *
- * @author Tuomas Pätäri
+ * Tapahtumat, jotka tapahtuvat kun kuuntelija on havainnut näppäintä painetun.
  */
 public class NappainTapahtuma {
     
@@ -17,6 +15,10 @@ public class NappainTapahtuma {
     private PeliRunko pelirunko;
     private JFrame frame;
     
+    /**
+     * Normaali setteri, joka ottaa lisäksi valikko-olion PeliRungosta talteen.
+     * @param pelirunko Pelin runkoluokka.
+     */
     public void setPelirunko(PeliRunko pelirunko) {
         this.pelirunko = pelirunko;
         this.menu = pelirunko.getMenu();
@@ -25,8 +27,11 @@ public class NappainTapahtuma {
     public void setFrame(JFrame frame) {
         this.frame = frame;
     }
-    
-    public void enter(Component component) {
+
+    /**
+     * Mitä tapahtuu kun kuuntelija on havainnut Enter-nappulan painalluksen.
+     */
+    public void enter() {
         boolean tapahtunut = false;
         if (pelirunko.getPeliTilanne() == 0) {
             int tapahtuma = menu.menuEnter();
@@ -46,8 +51,11 @@ public class NappainTapahtuma {
             tapahtunut = true;
         }
     }
-    
-    public void escape(Component component) {
+
+    /**
+     * Mitä tapahtuu kun kuuntelija on havainnut Esc-nappulan painalluksen.
+     */
+    public void escape() {
         boolean tapahtunut = false;
         if (pelirunko.getPeliTilanne() == 1) {
             pelirunko.setPeliTilanne(10);
@@ -58,19 +66,28 @@ public class NappainTapahtuma {
             tapahtunut = true;
         }
     }
-    
-    public void nappainK(Component component) {
+
+    /**
+     * Mitä tapahtuu kun kuuntelija on havainnut K-nappulan painalluksen.
+     */
+    public void nappainK() {
         if (pelirunko.getPeliTilanne() == 10) {
             pelirunko.setPeliTilanne(0);
         }
     }
     
-    public void nappainE(Component component) {
+    /**
+     * Mitä tapahtuu kun kuuntelija on havainnut E-nappulan painalluksen.
+     */
+    public void nappainE() {
         if (pelirunko.getPeliTilanne() == 10) {
             pelirunko.setPeliTilanne(1);
         }
     }
     
+    /**
+     * Mitä tapahtuu kun kuuntelija on havainnut Vasen-nappulan painalluksen.
+     */
     public void peliVasemmalle() {
         if (pelirunko.getPeliTilanne() == 0) {
             menu.vahennaX();
@@ -82,6 +99,9 @@ public class NappainTapahtuma {
         }
     }
     
+    /**
+     * Mitä tapahtuu kun kuuntelija on havainnut Oikea-nappulan painalluksen.
+     */
     public void peliOikealle() {
         if (pelirunko.getPeliTilanne() == 0) {
             menu.lisaaX();
@@ -93,6 +113,9 @@ public class NappainTapahtuma {
         }
     }
     
+    /**
+     * Mitä tapahtuu kun kuuntelija on havainnut Ylös-nappulan painalluksen.
+     */
     public void peliYlos() {
         if (pelirunko.getPeliTilanne() == 0) {
             menu.vahennaY();
@@ -104,6 +127,9 @@ public class NappainTapahtuma {
         }
     }
     
+    /**
+     * Mitä tapahtuu kun kuuntelija on havainnut Alas-nappulan painalluksen.
+     */
     public void peliAlas() {
         if (pelirunko.getPeliTilanne() == 0) {
             menu.lisaaY();

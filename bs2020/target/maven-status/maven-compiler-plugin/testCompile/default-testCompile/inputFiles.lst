@@ -1,6 +1,8 @@
-C:\Users\Tuomas Pätäri\Documents\NetBeansProjects\BalticSea2020-master\bs2020\src\test\java\fi\tp\bs2020\logiikka\MaastonLuojaTest.java
-C:\Users\Tuomas Pätäri\Documents\NetBeansProjects\BalticSea2020-master\bs2020\src\test\java\fi\tp\bs2020\logiikka\LaivanLuojaTest.java
-C:\Users\Tuomas Pätäri\Documents\NetBeansProjects\BalticSea2020-master\bs2020\src\test\java\fi\tp\bs2020\logiikka\TekoAlyLaivalleTest.java
-C:\Users\Tuomas Pätäri\Documents\NetBeansProjects\BalticSea2020-master\bs2020\src\test\java\fi\tp\bs2020\logiikka\PeliTest.java
-C:\Users\Tuomas Pätäri\Documents\NetBeansProjects\BalticSea2020-master\bs2020\src\test\java\fi\tp\bs2020\logiikka\TekoAlyMuualleTest.java
-C:\Users\Tuomas Pätäri\Documents\NetBeansProjects\BalticSea2020-master\bs2020\src\test\java\fi\tp\bs2020\logiikka\TekoAlyTest.java
+/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/test/java/fi/tp/bs2020/tekoaly/TekoAlyTest.java
+/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/test/java/fi/tp/bs2020/tekoaly/TekoAlyMuualleTest.java
+/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/test/java/fi/tp/bs2020/logiikka/PeliTest.java
+/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/test/java/fi/tp/bs2020/luojat/MaastonLuojaTest.java
+/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/test/java/fi/tp/bs2020/tekoaly/TekoAlyLaivalleTest.java
+/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/test/java/fi/tp/bs2020/logiikka/MenuTest.java
+/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/test/java/fi/tp/bs2020/luojat/LaivanLuojaTest.java
+/home/ad/fshome6/u6/t/ttpatari/Linux/NetBeansProjects/Baltic/bs2020/src/test/java/fi/tp/bs2020/logiikka/PeliRunkoTest.java

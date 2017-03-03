@@ -7,6 +7,9 @@
 <suppressions>
     <suppress files="bs2020.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="Kayttis.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="NappaimistomnKuuntelija.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="Palusta.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="Aanet.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="NappaimistonKuuntelija.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="Grafiikka.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="Soittaja.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="KuvanLataaja.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

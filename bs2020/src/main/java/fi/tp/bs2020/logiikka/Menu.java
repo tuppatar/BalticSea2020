@@ -4,8 +4,8 @@ import fi.tp.bs2020.gui.Soittaja;
 import java.util.List;
 
 /**
- * Alkuvalikko-luokka. Vastaa valikon tapahtumista erityisesti asettamalla valinnat
- * Peli-Muuttujat-luokkaan.
+ * Alkuvalikko-luokka. Vastaa valikossa liikkumisesta ja valintojen tekemisestä.
+ * Asettaa tehdyt valinnat PeliMuuttujat-luokkaan.
  */
 public class Menu {
     
@@ -14,6 +14,11 @@ public class Menu {
     private PeliMuuttujat moodi;
     private Soittaja soittaja;
 
+    /**
+     * Konstruktori.
+     * @param moodi     Pelissä olevat muuttujat.
+     * @param soittaja  Pelin äänien soittaja.
+     */
     public Menu(PeliMuuttujat moodi, Soittaja soittaja) {
         this.moodi = moodi;
         this.soittaja = soittaja;
@@ -37,6 +42,9 @@ public class Menu {
         }
     }
     
+    /**
+     * Menussa liikutaan ylös.
+     */
     public void vahennaY() {
         soittaja.soitaAani(100);
         y--;
@@ -46,6 +54,9 @@ public class Menu {
         korjaaX();
     }
 
+    /**
+     * Menussa liikutaan Alas.
+     */
     public void lisaaY() {
         soittaja.soitaAani(100);
         y++;
@@ -55,6 +66,9 @@ public class Menu {
         korjaaX();
     }
 
+    /**
+     * Menussa liikutaan vasemmalle.
+     */
     public void vahennaX() {
         soittaja.soitaAani(100);
         x--;
@@ -63,6 +77,9 @@ public class Menu {
         }
     }
     
+    /**
+     * Menussa liikutaan Oikealle.
+     */
     public void lisaaX() {
         soittaja.soitaAani(100);
         x++;
@@ -127,7 +144,10 @@ public class Menu {
         }
     }
     
-    public int menuEnter() { // 0 = menu jatkuu; 1 = uusi peli; 2 = exit game
+    /** Eri valikkotapahtumat, kun NappainTapahtuma-luokalta tulee tieto Enter-nappulan painamisesta valikossa.
+     * @return int: 0 = menu jatkuu, 1 = aloitetaan uusi peli, 2 = poistutaan koko pelistä.
+     */
+    public int menuEnter() {
         if (y == 0) {
             if (x == 0) {
                 soittaja.soitaAani(101);

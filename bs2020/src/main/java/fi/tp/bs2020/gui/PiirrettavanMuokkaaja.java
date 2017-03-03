@@ -91,6 +91,7 @@ public class PiirrettavanMuokkaaja {
      * @param piirrettava   maaston piirtotaulukko.
      * @param visible       maaston näkyvyystaulukko.
      * @param satunnaisuus  maaston satunnaisuustaulukko.
+     * @param tilanne       tilanne on erilainen, kun pelin päättyessä kaikki muuttuu näkyväksi. silloin taulukko palautetaan sellaisenaan.
      * @return              näytettävän piirtotaulukon.
      */
     public int[][] piirrettava(int[][] piirrettava, boolean[][] visible, int[][] satunnaisuus, int tilanne) {
