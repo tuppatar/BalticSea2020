@@ -1,9 +1,8 @@
 *.*~
 .gitignore
-/bs20/target
+/bs2020/target
 /dist/
-/bs2020/nbproject/private/
-/bs2020/nbproject/dist/
+/bs2020/nbproject
 <<<<<<< HEAD
 =======
 /bs2020/target
