@@ -1,6 +1,7 @@
 package fi.tp.bs2020.gui;
 
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -60,10 +61,6 @@ public class Aanet implements Runnable {
                 this.play(1000, true);
             }
         }
-    }
-    
-    private InputStream lataa(String tiedosto) {
-        return getClass().getClassLoader().getResourceAsStream(tiedosto);
     }
     
     private void luoSoittolista() {
@@ -132,9 +129,26 @@ public class Aanet implements Runnable {
 
         soittolista.put(1000, "aanet/musa.mp3");
     }
+//InputStream audioSrc = getClass().getResourceAsStream("mySound.au");
+////add buffer for mark/reset support
+//InputStream bufferedIn = new BufferedInputStream(audioSrc);
+//AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
+    //
+//BufferedInputStream myStream = new BufferedInputStream(getClass().getResourceAsStream("mySound.‌​au")); 
+//AudioInputStream audio2 = AudioSystem.getAudioInputStream(myStream);
+//    private InputStream lataa(String tiedosto) {
+//        return getClass().getClassLoader().getResourceAsStream(tiedosto);
+//    }
+    
+    private AudioInputStream lataa(String tiedosto) throws UnsupportedAudioFileException, IOException {
+        BufferedInputStream ii = new BufferedInputStream(getClass().getClassLoader().getResourceAsStream(tiedosto));
+//        InputStream bufferedIn = new BufferedInputStream(ii);
+        return AudioSystem.getAudioInputStream(ii);
+    }
 
     public void play(int soitettava, boolean onkoMusiikki) {
-        try (final AudioInputStream in = getAudioInputStream(lataa(soittolista.get(soitettava)))) {
+//        try (final AudioInputStream in = getAudioInputStream(lataa(soittolista.get(soitettava)))) {
+        try (final AudioInputStream in = lataa(soittolista.get(soitettava))) {
 
             final AudioFormat outFormat = getOutFormat(in.getFormat());
             final Info info = new Info(SourceDataLine.class, outFormat);
