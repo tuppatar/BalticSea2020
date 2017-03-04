@@ -21,4 +21,5 @@ Päivä | Tunnit | Kuvaus
 1.3.2017 | 4.5h | Valikon ja pelin ruutunäkymän komponenttien jatkoa ja niihin liittyvien grafiikkojen tekoa.
 2.3.2017 | 12.0h | Valikon viimeistely ja Soittaja-luokan teko. Äänien muokkausta ja niiden soiton lisääminen koodiin.
 3.3.2017 | 8.5h | Musiikin teko (vanhan biisin pohjalta). Viimeiseen palautukseen tarvittavat loppuviimeistelyt.
+4.3.2017 | 1.0h | Korjattu löytynyt bugi äänien soitossa .jar-tiedostoa ajettaessa. Julkaistu tästä 1.1-release.
 x.x.xxxx | x.xh | Kaikkea pelin grafiikkaan ja ääniin tarvittavaa työtä en ole jaksanut pistää ylös tuntikirjanpitoon.
