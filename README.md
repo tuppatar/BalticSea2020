@@ -2,7 +2,7 @@
 
 Peli on laajennettu versio perinteisestä laivanupotuksesta. Pelissä on laivojen lisäksi saaria ja niillä siiviliasumuksia, joihin vastustaja ei saa osua. Pelivalikossa voi valita taistelevan sotilasliiton ja vaihtaa pelin elementtejä.
 
-Kiitokset: Osa pelin äänistä on Juliuksen, Topin, Ellun ja Arvon aikaansaannosta (jäin oluet velkaa) ja osa äänistä on myös freesound.org:sta.
+Kiitokset: Osa pelin äänistä on Juliuksen, Topin, Ellun ja Arvon aikaansaannosta (jäin oluet velkaa) ja osa äänistä on myös freesound.org:sta. Koodiongelmissa sain paljon apua stackoverflow.com:sta ja varsinkin äänien soiton osalta.
 
 Dokumentaatio:
 
